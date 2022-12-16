@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Food choice</string>
+    <string name="slogan">Cooking a Delicious Food Easily</string>
+    <string name="slogan_dis">Discover more than 1200 food recipe in your hand and cooking it easily</string>
+    <string name="copyright">Copyrights © 2022 FoodChoice</string>
+
+    <!--String for On boarding Screens-->
+
+    <string name="first_slide_title">Find Recipes</string>
+    <string name="second_slide_title">Enjoy!</string>
+    <string name="third_slide_title">Cook</string>
+
+    <!--Descriptions-->
+    <string name="first_slide_des">Cast iron is an old fashion form of cookware that still has a place in today\'s world of modern cooking.</string>
+    <string name="second_slide_des">There are many variations of frosting recipes as there desi recipe.One of the most popular is Chicken Biryani.</string>
+    <string name="third_slide_des">You may  think that all ice is the same , but if you have contaminated ice , you and your family could be risking your health.</string>
+
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="start_btn">Get Started</string>
+
+    <!--Sign in strings-->
+    <string name="sign_in">Sign in</string>
+    <string name="cr_acc">Create a account</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="ed_email">Enter your email</string>
+    <string name="ed_password">Enter your password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="fr_pass">Forgot password?</string>
+
+
+    <!--Sign up strings-->
+    <string name="sign_up">Sign Up</string>
+    <string name="su_cr">already have an account</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="c_password">Confirm Password</string>
+    <string name="phone">Phone Number</string>
+
+
+    <!--Menu titles-->
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="meal_planner">Meal Planner</string>
+    <string name="profile">Profile</string>
+    <string name="grocery">Grocery</string>
+    <string name="Login">Sign In</string>
+    <string name="search">Search</string>
+
+
+
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "697086354851",
+    "firebase_url": "https://foodchoice-b79b6-default-rtdb.firebaseio.com",
+    "project_id": "foodchoice-b79b6",
+    "storage_bucket": "foodchoice-b79b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697086354851:android:aaa77910f279a1768d2616",
+        "android_client_info": {
+          "package_name": "com.example.foodchoice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697086354851-j1t563cehnocfgv3lm3qj2rnifkiv7nq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaazkQIBIaLCHh00lb1rSkIGyofBW0H1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697086354851-j1t563cehnocfgv3lm3qj2rnifkiv7nq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

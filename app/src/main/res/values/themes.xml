@@ -1,0 +1,30 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.FoodChoice" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/color_main</item>
+        <item name="colorPrimaryVariant">@color/color_main_two</item>
+        <item name="colorOnPrimary">@color/color_white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/color_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/color_main</item>
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="Theme.FoodChoice.BackgroundStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="android:windowBackground">@drawable/welcome</item>
+
+    </style>
+
+    <style name="navigationTheme">
+
+        <!---Color of text and icons when selected -->
+        <item name="colorPrimary">@color/color_main</item>
+        <!--Background color when selected-->
+        <item name="colorControlHighlight">@color/color_secondary</item>
+    </style>
+
+</resources>
