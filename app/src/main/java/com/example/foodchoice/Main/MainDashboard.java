@@ -6,6 +6,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MainDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ActivityMainDashboardBinding activityMainDashboardBinding;
@@ -36,10 +39,10 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         UserSession userSession = new UserSession(this);
         HashMap<String, String> getUserDetails = userSession.getUserDetailFromSession();
         String userName = getUserDetails.get(UserSession.KEY_USERNAME);
-        activityMainDashboardBinding.userDashboardName.setText("Hi, "+userName);
+        activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s", userName));
 
         ///bottom Navigation function////
-        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage,new CategoryFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage,new HomeFragment()).commit();
         activityMainDashboardBinding.bottomNavigation.setItemSelected(R.id.bottom_nav_home,true);
         bottomNavigation();
 
@@ -49,6 +52,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
 
     public void bottomNavigation(){
         activityMainDashboardBinding.bottomNavigation.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public void onItemSelected(int i) {
                 Fragment fragment = null;
@@ -65,7 +69,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
                         fragment = new GroceryFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage,fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage, Objects.requireNonNull(fragment)).commit();
             }
         });
     }
@@ -136,11 +140,12 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         ///when item clicked change activity or something else///
-        switch (item.getItemId()){
-
+        if (item.getItemId() == R.id.nav_home) {
+            startActivity(new Intent(MainDashboard.this, MainDashboard.class));
         }
         return true;
     }

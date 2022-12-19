@@ -21,17 +21,17 @@ public class WelcomeScreen extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnGuest.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), MainDashboard.class));
-            Animatoo.INSTANCE.animateFade(WelcomeScreen.this);
+            startActivity(new Intent(WelcomeScreen.this,MainDashboard.class));
+            Animatoo.INSTANCE.animateFade(this);
             finish();
         });
         binding.SignIn.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),SignIn.class));
-            Animatoo.INSTANCE.animateFade(WelcomeScreen.this);
+            startActivity(new Intent(WelcomeScreen.this,SignIn.class));
+            Animatoo.INSTANCE.animateFade(this);
         });
         binding.SignUp.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),SignUp.class));
-            Animatoo.INSTANCE.animateFade(WelcomeScreen.this);
+            startActivity(new Intent(WelcomeScreen.this,SignUp.class));
+            Animatoo.INSTANCE.animateFade(this);
         });
     }
 }

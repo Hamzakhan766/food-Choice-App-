@@ -1,5 +1,6 @@
 package com.example.foodchoice.Common;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.WelcomeScreen;
-import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.R;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIMER = 6000;
     SharedPreferences onBoardingScreen;
@@ -36,11 +37,12 @@ public class SplashScreen extends AppCompatActivity {
                     editor.putBoolean("isFirstTime",false);
                     editor.commit();
                     ///Now show onBoarding screen///
-                    startActivity(new Intent(getApplicationContext(),onBoarding.class));
+                    startActivity(new Intent(SplashScreen.this,onBoarding.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();
+
                 }else {
-                    startActivity(new Intent(getApplicationContext(), WelcomeScreen.class));
+                    startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();
                 }

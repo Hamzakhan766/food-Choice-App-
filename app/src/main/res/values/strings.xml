@@ -22,6 +22,7 @@
 
     <!--Sign in strings-->
     <string name="sign_in">Sign in</string>
+    <string name="phrase">Already\nhave an\nAccount?</string>
     <string name="cr_acc">Create a account</string>
     <string name="google">Google</string>
     <string name="facebook">Facebook</string>
@@ -33,6 +34,7 @@
 
     <!--Sign up strings-->
     <string name="sign_up">Sign Up</string>
+    <string name="phrase_two">Here\'s\nyour first\nstep with\nus!</string>
     <string name="su_cr">already have an account</string>
     <string name="full_name">Full Name</string>
     <string name="username">Username</string>
@@ -40,6 +42,7 @@
     <string name="password">Password</string>
     <string name="c_password">Confirm Password</string>
     <string name="phone">Phone Number</string>
+    <string name="or">OR</string>
 
 
     <!--Menu titles-->

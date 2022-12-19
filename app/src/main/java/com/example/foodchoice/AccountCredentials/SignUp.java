@@ -10,11 +10,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.MainDashboard;
-import com.example.foodchoice.R;
 import com.example.foodchoice.databinding.ActivitySignUpBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,16 +40,6 @@ public class SignUp extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activitySignUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(activitySignUpBinding.getRoot());
-
-
-        ////already have account///
-        activitySignUpBinding.alreadyAcc.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),SignIn.class));
-            Animatoo.INSTANCE.animateSlideRight(SignUp.this);
-        });
-        ///backPress////
-        activitySignUpBinding.regBackPressed.setOnClickListener(v -> finish());
-
 
         ////////registration///////////
         activitySignUpBinding.SignUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +76,7 @@ public class SignUp extends AppCompatActivity {
                         ///Save user into realtime database /////
                         UserClass userModel = new UserClass(FullName,UserName,Email,Phone,Password);
                         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users");
-                        dbRef.child(firebaseUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        dbRef.child(Objects.requireNonNull(firebaseUser).getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 //////or debugging purpose///////

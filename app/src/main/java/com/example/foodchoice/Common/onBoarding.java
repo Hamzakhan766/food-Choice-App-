@@ -10,8 +10,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.WelcomeScreen;
 import com.example.foodchoice.AdapterClasses.sliderAdapter;
 import com.example.foodchoice.R;
@@ -35,14 +33,12 @@ public class onBoarding extends AppCompatActivity {
         activityOnBoardingBinding.dotsIndicator.attachTo(activityOnBoardingBinding.slider);
 
         activityOnBoardingBinding.skipBtn.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), WelcomeScreen.class));
-            Animatoo.INSTANCE.animateFade(onBoarding.this);
+            startActivity(new Intent(onBoarding.this, WelcomeScreen.class));
             finish();
         });
         activityOnBoardingBinding.nextBtn.setOnClickListener(v -> activityOnBoardingBinding.slider.setCurrentItem(currentPosition + 1));
         activityOnBoardingBinding.getStartedBtn.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), WelcomeScreen.class));
-            Animatoo.INSTANCE.animateFade(onBoarding.this);
+            startActivity(new Intent(onBoarding.this, WelcomeScreen.class));
             finish();
         });
 
