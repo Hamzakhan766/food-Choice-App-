@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_menu"
-    tools:openDrawer="start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.MainDashboard">
+    tools:context=".Main.MainDashboard"
+    tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/drawer_nav"
@@ -26,10 +26,10 @@
             android:id="@+id/StickyScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:stickyHeader="@id/StickyHeader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:stickyHeader="@id/StickyHeader">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -80,12 +80,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
                         android:letterSpacing="0.1"
                         android:text="@string/top_bar_title"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="7dp"
                         android:textColor="@color/color_secondary"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
