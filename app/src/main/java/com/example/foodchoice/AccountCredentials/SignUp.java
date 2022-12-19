@@ -50,7 +50,7 @@ public class SignUp extends AppCompatActivity {
             Animatoo.INSTANCE.animateSlideRight(SignUp.this);
         });
         ///backPress////
-        activitySignUpBinding.backPressed.setOnClickListener(v -> finish());
+        activitySignUpBinding.regBackPressed.setOnClickListener(v -> finish());
 
 
         ////////registration///////////
@@ -102,7 +102,6 @@ public class SignUp extends AppCompatActivity {
                                     Intent intent = new Intent(SignUp.this, MainDashboard.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
-                                    Animatoo.INSTANCE.animateFade(SignUp.this);
                                     finish();
                                 }
                             }
@@ -127,10 +126,11 @@ public class SignUp extends AppCompatActivity {
          if (value.isEmpty()){
              activitySignUpBinding.userFullName.setError("Field cannot be empty");
              return  false;
-         }else
+         }else{
              activitySignUpBinding.userFullName.setError(null);
              activitySignUpBinding.userFullName.setErrorEnabled(false);
              return true;
+         }
     }
     public boolean validateUSerName(){
         String value = Objects.requireNonNull(activitySignUpBinding.userName.getEditText()).getText().toString().trim();
@@ -142,9 +142,9 @@ public class SignUp extends AppCompatActivity {
              activitySignUpBinding.userName.setError("username is too large");
              return false;
         }else
-            activitySignUpBinding.userName.setError(null);
+        { activitySignUpBinding.userName.setError(null);
             activitySignUpBinding.userName.setErrorEnabled(false);
-        return true;
+        return true;}
     }
     public boolean validateEmail(){
         String value = Objects.requireNonNull(activitySignUpBinding.userEmail.getEditText()).getText().toString();
@@ -154,10 +154,10 @@ public class SignUp extends AppCompatActivity {
         }else if(!Patterns.EMAIL_ADDRESS.matcher(value).matches()){
                activitySignUpBinding.userEmail.setError("please enter valid email");
                return false;
-         }else
+         }else{
              activitySignUpBinding.userEmail.setError(null);
              activitySignUpBinding.userEmail.setErrorEnabled(false);
-             return true;
+             return true;}
     }
     public  boolean validatePhone(){
         String value = Objects.requireNonNull(activitySignUpBinding.UserPhone.getEditText()).getText().toString().trim();
@@ -170,9 +170,9 @@ public class SignUp extends AppCompatActivity {
             return false;
         }
         else
-            activitySignUpBinding.UserPhone.setError(null);
+        {activitySignUpBinding.UserPhone.setError(null);
             activitySignUpBinding.UserPhone.setErrorEnabled(false);
-            return true;
+            return true;}
     }
     public boolean validatePassword(){
         String value = Objects.requireNonNull(activitySignUpBinding.userPassword.getEditText()).getText().toString().trim();
@@ -182,10 +182,10 @@ public class SignUp extends AppCompatActivity {
         }else if(!PASSWORD_PATTERN.matcher(value).matches()){
             activitySignUpBinding.userPassword.setError("Password is too weak");
             return false;
-        }else
+        }else{
             activitySignUpBinding.userPassword.setError(null);
             activitySignUpBinding.userPassword.setErrorEnabled(false);
-            return true;
+            return true;}
     }
 
 }

@@ -16,11 +16,11 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/color_main"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="@string/sign_up">
+            >
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
@@ -28,30 +28,28 @@
                 android:layout_height="wrap_content"
                 android:padding="18dp">
 
-                <ImageButton
-                    android:id="@+id/back_pressed"
+                <ImageView
+                    android:id="@+id/reg_backPressed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:background="@color/color_main"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
+                    android:minWidth="27dp"
+                    android:minHeight="27dp"
                     android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
-                <Button
-                    android:id="@+id/already_acc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:background="#00000000"
-                   android:textStyle="bold"
-                    android:textSize="11sp"
-                    android:text="@string/su_cr"
-                    android:textAllCaps="false" />
-
             </RelativeLayout>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/signup"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                app:layout_collapseMode="parallax"
+                />
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="wrap_content"
@@ -66,7 +64,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/nested_account_bg"
+        android:background="@drawable/nested_view_bg"
         android:padding="15dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -94,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:maxLines="1"
                     android:textColor="@color/color_secondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -116,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:maxLines="1"
                     android:textColor="@color/color_secondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -137,6 +137,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/color_secondary" />
 
@@ -150,6 +151,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/phone"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
@@ -160,6 +163,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone|number"
+                    android:maxLines="1"
+                    android:maxLength="11"
                     android:textColor="@color/color_secondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -172,6 +177,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/password"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:hintTextColor="@color/color_secondary"
@@ -182,6 +189,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="16"
+                    android:maxLines="1"
                     android:inputType="textPassword"
                     android:textColor="@color/color_secondary" />
 
@@ -194,6 +203,14 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/primary_buttons"
                 android:text="@string/sign_up"
+                android:textColor="@color/color_secondary" />
+            <Button
+                android:id="@+id/already_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="@string/su_cr"
+                android:textAllCaps="false"
                 android:textColor="@color/color_secondary" />
 
             <TextView

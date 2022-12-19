@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.foodchoice'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.foodchoice"
-        minSdk 22
-        targetSdk 32
+        minSdk 23
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -41,10 +41,15 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     implementation("com.tbuonomo:dotsindicator:4.3")
     implementation 'com.github.AtifSayings:Animatoo:1.0.1'
+    implementation 'com.github.amarjain07:StickyScrollView:1.0.3'
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.10'
 }

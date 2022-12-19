@@ -25,6 +25,7 @@ public class UserSession  {
         createSession = userSession.edit();
     }
 
+
     ////create login/register session/////
     public void  loginRegisterSession(String FullName, String UserName, String Email, String Phone, String Password){
         createSession.putBoolean("IS_LOGGED_IN",true);
@@ -33,6 +34,8 @@ public class UserSession  {
         createSession.putString(KEY_EMAIL,Email);
         createSession.putString(KEY_USERPHONE,Phone);
         createSession.putString(KEY_PASSWORD,Password);
+
+        createSession.commit();
     }
 
     /////get user details with session////

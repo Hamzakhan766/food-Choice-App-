@@ -2,68 +2,146 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_menu"
+    tools:openDrawer="start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_menu"
     tools:context=".Main.MainDashboard">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/drawer_nav"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/color_white"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/nav_header"
         android:theme="@style/navigationTheme"
-        />
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/color_white"
-        >
+        android:layout_height="match_parent">
 
-    <!--layout for Top Bar-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        >
-
-        <ImageView
-            android:id="@+id/hamburger"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/menu"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            />
-
-        <TextView
-            android:id="@+id/dynamic_username"
-            android:layout_width="wrap_content"
+        <com.amar.library.ui.StickyScrollView
+            android:id="@+id/StickyScrollView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:textSize="20sp"
-            android:textColor="@color/color_secondary"
-            />
+            app:stickyHeader="@id/StickyHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/userDashboard_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/woman"
-            tools:ignore="ImageContrastCheck" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
 
-    </RelativeLayout>
 
-    </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/StickyHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:id="@+id/hamburger"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/menu" />
+
+                    <TextView
+                        android:id="@+id/userDashboard_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/color_secondary"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/userDashboard_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/woman"
+                        tools:ignore="ImageContrastCheck" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="@string/top_bar_title"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="7dp"
+                        android:textColor="@color/color_secondary"
+                        android:textSize="18sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp">
+
+                        <EditText
+                            android:id="@+id/edSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/search_bg"
+                            android:drawableStart="@drawable/ic_baseline_search_24"
+                            android:drawablePadding="6dp"
+                            android:hint="@string/search_hint"
+                            android:importantForAutofill="no"
+                            android:letterSpacing=".2"
+                            android:maxLength="16"
+                            android:maxLines="1"
+                            android:padding="16dp"
+                            android:textColorHint="@color/color_secondary"
+                            android:textCursorDrawable="@null" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.amar.library.ui.StickyScrollView>
+
+        <FrameLayout
+            android:id="@+id/FragmentManage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StickyScrollView" />
+
+        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:orientation="horizontal"
+            android:padding="7dp"
+            app:cnb_iconSize="28dp"
+            app:cnb_menuResource="@menu/bottom_menu"
+            app:cnb_radius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
