@@ -15,14 +15,14 @@
         android:theme="@style/Theme.FoodChoice"
         tools:targetApi="31">
         <activity
-            android:name=".UserProfile"
+            android:name=".UserCredentials.UserProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainDashboard"
+            android:name=".Main.MainDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -31,13 +31,6 @@
         <activity
             android:name=".AccountCredentials.WelcomeScreen"
             android:theme="@style/Theme.FoodChoice.BackgroundStyle" />
-        <activity
-            android:name=".Main.MainDashboard"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".AccountCredentials.SignUp"
             android:exported="false">
@@ -52,20 +45,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".UserCredentials.EditProfile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".UserCredentials.UserProfile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".Common.onBoarding"
             android:exported="false">

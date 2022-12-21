@@ -13,11 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.foodchoice.AccountCredentials.SignIn;
+import com.example.foodchoice.AccountCredentials.SignUp;
 import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.R;
+import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -34,6 +38,17 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activityMainDashboardBinding = ActivityMainDashboardBinding.inflate(getLayoutInflater());
         setContentView(activityMainDashboardBinding.getRoot());
+
+
+        activityMainDashboardBinding.userDashboardImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDashboard.this, UserProfile.class));
+                Animatoo.INSTANCE.animateSlideUp(MainDashboard.this);
+            }
+        });
+
+
 
         ///User session ///
         UserSession userSession = new UserSession(this);
@@ -135,7 +150,8 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     public void onBackPressed() {
         if(activityMainDashboardBinding.drawerMenu.isDrawerVisible(GravityCompat.START)){
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
-        }else {
+        }
+        else {
             super.onBackPressed();
         }
     }
@@ -143,10 +159,29 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragmentDrawer;
         ///when item clicked change activity or something else///
-        if (item.getItemId() == R.id.nav_home) {
-            startActivity(new Intent(MainDashboard.this, MainDashboard.class));
+        switch (item.getItemId()){
+
+            case  R.id.nav_all_categories:
+                 fragmentDrawer = new CategoryFragment();
+                 getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage,fragmentDrawer).commit();
+                 activityMainDashboardBinding.userDashboardName.setText("Categories");
+                 activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+                 activityMainDashboardBinding.bottomNavigation.setVisibility(View.INVISIBLE);
+                 break;
+
+
+            case R.id.nav_login:
+                startActivity(new Intent(MainDashboard.this, SignIn.class));
+                activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.nav_signUp:
+                startActivity(new Intent(MainDashboard.this, SignUp.class));
+                activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+                break;
         }
-        return true;
+        return false;
     }
 }

@@ -42,7 +42,8 @@
                 <RelativeLayout
                     android:id="@+id/StickyHeader"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:id="@+id/hamburger"
@@ -50,7 +51,8 @@
                         android:layout_height="35dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/menu" />
+                        android:src="@drawable/menu"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/userDashboard_name"
@@ -59,7 +61,8 @@
                         android:layout_centerInParent="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/color_secondary"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="RelativeOverlap" />
 
                     <ImageView
                         android:id="@+id/userDashboard_image"
@@ -68,7 +71,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/woman"
-                        tools:ignore="ImageContrastCheck" />
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 </RelativeLayout>
 
