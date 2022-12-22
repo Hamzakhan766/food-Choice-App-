@@ -21,6 +21,7 @@ import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
+import com.example.foodchoice.Main.MealPlanner.MealPlanner;
 import com.example.foodchoice.R;
 import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
@@ -171,6 +172,12 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         UserSession userSession = new UserSession(MainDashboard.this);
         ///when item clicked change activity or something else///
+
+        if(item.getItemId() == R.id.Meal_Planner){
+            startActivity(new Intent(MainDashboard.this, MealPlanner.class));
+            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+        }
+
         if (item.getItemId() == R.id.nav_login) {
             startActivity(new Intent(MainDashboard.this, SignIn.class));
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);

@@ -53,8 +53,7 @@
     <string name="grocery">Grocery</string>
     <string name="Login">Sign In</string>
     <string name="search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
     <!--Dashboard Strings-->
@@ -63,5 +62,11 @@
     <string name="search_cat">Search Category</string>
     <string name="search_grocery">Search Grocery</string>
 
-
+    <!--MealPlanner Strings-->
+    <string name="break_fast">Break Fast</string>
+    <string name="lunch">Lunch</string>
+    <string name="Dinner">Dinner</string>
+    <string name="break_todo">Breakfast is often called \'the most important meal of the day\', and for good reason. As the name suggests, breakfast breaks the overnight fasting period</string>
+    <string name="lunch_todo">\ˈlunch. : a light meal. especially : one eaten in the middle of the day. : the food prepared for a lunch.</string>
+    <string name="dinner_todo">In modern use dinner and supper both usually refer to the main meal of the day eaten in the evening, with dinner being the slightly more formal word</string>
 </resources>
