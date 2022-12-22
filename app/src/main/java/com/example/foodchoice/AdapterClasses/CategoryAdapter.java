@@ -5,12 +5,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodchoice.HelperClasses.CategoryModel;
 import com.example.foodchoice.R;
 
@@ -18,57 +21,52 @@ import java.util.ArrayList;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
-    ArrayList<CategoryModel> modelArrayList;
     Context context;
-    int row_index = -1;
+    ArrayList<CategoryModel> categoryModelArrayList;
 
-    public CategoryAdapter(ArrayList<CategoryModel> modelArrayList, Context context) {
-        this.modelArrayList = modelArrayList;
+    public CategoryAdapter(Context context, ArrayList<CategoryModel> categoryModelArrayList) {
         this.context = context;
+        this.categoryModelArrayList = categoryModelArrayList;
     }
+
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ////Create View////
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_category_name_item,parent,false);
+    public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_grid_view,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-       //set category Names////
-        holder.catName.setText(modelArrayList.get(position).getCategoryName());
-
-        ///checking item selected///
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NotifyDataSetChanged")
+    public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
+        holder.category_name.setText(categoryModelArrayList.get(position).getCategoryName());
+        holder.category_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                row_index = position;
-                notifyDataSetChanged();
+
             }
         });
-        if (row_index == position){
-            holder.linearLayout.setBackgroundResource(R.drawable.home_category_name_selected);
-        }else {
-            holder.linearLayout.setBackgroundResource(R.drawable.home_category_name_bg);
-        }
     }
 
     @Override
     public int getItemCount() {
-        return modelArrayList.size();
+        return categoryModelArrayList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        ////view Variable////
-        TextView catName;
-        LinearLayout linearLayout;
+
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView category_img;
+        TextView category_name;
+        CardView category_cardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            catName = itemView.findViewById(R.id.CategoryName);
-            linearLayout = itemView.findViewById(R.id.catNameLayout);
+
+            category_name = itemView.findViewById(R.id.category_name);
+            category_cardView = itemView.findViewById(R.id.category_cardView);
 
         }
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -66,6 +67,9 @@ public class SignUp extends AppCompatActivity {
             String Phone =  Objects.requireNonNull(activitySignUpBinding.UserPhone.getEditText()).getText().toString();
             String Password =  Objects.requireNonNull(activitySignUpBinding.userPassword.getEditText()).getText().toString();
 
+
+
+
             ////registration with firebase authentication/////
             FirebaseAuth userAuth = FirebaseAuth.getInstance();
             userAuth.createUserWithEmailAndPassword(Email , Password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
@@ -81,7 +85,7 @@ public class SignUp extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 //////or debugging purpose///////
                                 if(task.isSuccessful()) {
-                                    Toast.makeText(SignUp.this, "User Register Successfully ", Toast.LENGTH_SHORT).show();
+
                                     ////////Creating Session/////////
                                     UserSession userSession = new UserSession(SignUp.this);
                                     userSession.loginRegisterSession(FullName, UserName, Email, Phone, Password);

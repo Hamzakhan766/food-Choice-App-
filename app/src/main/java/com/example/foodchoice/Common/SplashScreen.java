@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.WelcomeScreen;
+import com.example.foodchoice.HelperClasses.UserSession;
+import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.R;
 
 @SuppressLint("CustomSplashScreen")
@@ -23,6 +25,9 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
+
+        UserSession userSession = new UserSession(SplashScreen.this);
+
 
        ////splash screen handler////
         new Handler().postDelayed(new Runnable() {
@@ -40,8 +45,14 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(new Intent(SplashScreen.this,onBoarding.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();
+                }
+                else if(userSession.checkUserLogin()){
+                    startActivity(new Intent(SplashScreen.this, MainDashboard.class));
+                    Animatoo.INSTANCE.animateFade(SplashScreen.this);
+                    finish();
+                }
 
-                }else {
+                else {
                     startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();

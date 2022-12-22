@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.databinding.ActivitySignInBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 
@@ -55,13 +57,14 @@ public class SignIn extends AppCompatActivity {
         String Email = Objects.requireNonNull(activitySignInBinding.LoginEmail.getEditText()).getText().toString().trim();
         String Password = Objects.requireNonNull(activitySignInBinding.loginPassword.getEditText()).getText().toString().trim();
 
+
         ////login with database///
         FirebaseAuth getAuth = FirebaseAuth.getInstance();
         getAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful()){
-                   /////redirecting user to main dashboard///
+
                    Intent intent = new Intent(SignIn.this, MainDashboard.class);
                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                    startActivity(intent);

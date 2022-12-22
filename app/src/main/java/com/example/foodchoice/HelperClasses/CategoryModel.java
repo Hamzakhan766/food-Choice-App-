@@ -3,8 +3,8 @@ package com.example.foodchoice.HelperClasses;
 public class CategoryModel {
     String categoryName , categoryImageUri;
 
-    public CategoryModel(String categoryName) {
-        this.categoryName = categoryName;
+    public CategoryModel(){
+
     }
 
     public CategoryModel(String categoryName, String categoryImageUri) {
@@ -27,4 +27,6 @@ public class CategoryModel {
     public void setCategoryImageUri(String categoryImageUri) {
         this.categoryImageUri = categoryImageUri;
     }
+
+
 }
