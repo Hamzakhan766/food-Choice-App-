@@ -6,6 +6,7 @@ public class UserClass {
     ////empty constructor///
     public UserClass() {
     }
+
     ///without user_id/////
     public UserClass(String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword) {
         this.user_fullName = user_fullName;

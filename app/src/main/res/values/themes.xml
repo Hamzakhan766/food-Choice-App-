@@ -27,4 +27,13 @@
         <item name="colorControlHighlight">@color/color_secondary</item>
     </style>
 
+    <style name="Theme.FoodChoice.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FoodChoice.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FoodChoice.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

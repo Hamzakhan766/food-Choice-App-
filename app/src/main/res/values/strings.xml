@@ -52,8 +52,10 @@
     <string name="profile">Profile</string>
     <string name="grocery">Grocery</string>
     <string name="Login">Sign In</string>
-    <string name="search">Search</string>
-
+    <string name="recipe">Recipe</string>
+    <string name="my_rec">My Recipe\'s</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="my_info">My information</string>
 
 
     <!--Dashboard Strings-->
@@ -69,4 +71,13 @@
     <string name="break_todo">Breakfast is often called \'the most important meal of the day\', and for good reason. As the name suggests, breakfast breaks the overnight fasting period</string>
     <string name="lunch_todo">\ˈlunch. : a light meal. especially : one eaten in the middle of the day. : the food prepared for a lunch.</string>
     <string name="dinner_todo">In modern use dinner and supper both usually refer to the main meal of the day eaten in the evening, with dinner being the slightly more formal word</string>
+    <string name="title_activity_update_user_profile">update_user_profile</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

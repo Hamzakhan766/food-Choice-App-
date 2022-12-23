@@ -15,8 +15,8 @@
     <ImageView
         android:id="@+id/user_Image"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:layout_constraintVertical_bias="0.2"
+        android:layout_height="150dp"
+        app:layout_constraintVertical_bias="0.5"
         android:src="@drawable/woman"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,7 @@
                 android:layout_margin="20dp">
 
                 <TextView
+                    android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -56,7 +57,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-               android:background="@drawable/profile_lg_bg"
                 android:elevation="10dp"
                 android:orientation="vertical"
                 android:padding="14dp">
@@ -64,7 +64,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp">
+                    android:layout_marginTop="6dp"
+                    >
 
                     <LinearLayout
                         android:id="@+id/back_to_home"
@@ -72,8 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/profile_items_bg"
-                        android:padding="9dp"
+                        android:padding="5dp"
                         android:orientation="vertical"
                         tools:ignore="UselessParent">
 
@@ -81,18 +81,68 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/pro_dashboard"
+                            android:layout_gravity="center"
                             tools:ignore="ContentDescription" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/home" />
+                            android:text="@string/back_to_home" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/myRecipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/recipe"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/my_rec" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/myInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/information"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/my_info" />
 
 
                     </LinearLayout>
 
 
                 </RelativeLayout>
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -102,20 +152,8 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/logout"
                         android:layout_centerVertical="true"
                         tools:ignore="ContentDescription" />
 
@@ -124,12 +162,27 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/updateProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/primary_buttons"
-                android:text="Edit Profile"
+                android:text="Update profile"
+                android:textStyle="bold"
                 android:textColor="@color/color_secondary"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/profile_items_bg"
+                app:backgroundTint="@null"
+                android:textStyle="bold"
+                android:text="Delete your account"
+                android:textColor="@color/color_white"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>

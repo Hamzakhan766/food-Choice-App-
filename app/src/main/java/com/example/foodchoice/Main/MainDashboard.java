@@ -186,11 +186,11 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
             startActivity(new Intent(MainDashboard.this, SignUp.class));
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
-        if(item.getItemId() == R.id.nav_logout){
-            userSession.logout();
-            startActivity(new Intent(MainDashboard.this,MainDashboard.class));
-            finish();
-        }
+//        if(item.getItemId() == R.id.nav_logout){
+//            userSession.logout();
+//            startActivity(new Intent(MainDashboard.this,MainDashboard.class));
+//            finish();
+//        }
 
         return false;
     }

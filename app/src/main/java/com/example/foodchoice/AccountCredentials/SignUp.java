@@ -68,8 +68,6 @@ public class SignUp extends AppCompatActivity {
             String Password =  Objects.requireNonNull(activitySignUpBinding.userPassword.getEditText()).getText().toString();
 
 
-
-
             ////registration with firebase authentication/////
             FirebaseAuth userAuth = FirebaseAuth.getInstance();
             userAuth.createUserWithEmailAndPassword(Email , Password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
