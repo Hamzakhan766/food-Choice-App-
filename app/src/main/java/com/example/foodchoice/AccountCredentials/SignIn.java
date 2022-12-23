@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.databinding.ActivitySignInBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 

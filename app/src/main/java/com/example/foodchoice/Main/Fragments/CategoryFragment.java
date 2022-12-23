@@ -39,20 +39,21 @@ public class CategoryFragment extends Fragment {
 
         rvCategory = view.findViewById(R.id.CategoryRecyclerView);
         databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
+
         rvCategory.setLayoutManager(new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false));
         rvCategory.setHasFixedSize(true);
         categoryModelArrayList = new ArrayList<>();
         adapter = new CategoryAdapter(getContext(),categoryModelArrayList);
         rvCategory.setAdapter(adapter);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("categoryName").addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                    CategoryModel categoryModel = dataSnapshot.getValue(CategoryModel.class);
                    categoryModelArrayList.add(categoryModel);
+
                 }
                 adapter.notifyDataSetChanged();
             }

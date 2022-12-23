@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentManager;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.SignIn;
 import com.example.foodchoice.AccountCredentials.SignUp;
-import com.example.foodchoice.HelperClasses.UserSession;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
@@ -27,8 +26,6 @@ import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.HashMap;
 
 public class MainDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -49,11 +46,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
             Animatoo.INSTANCE.animateSlideUp(MainDashboard.this);
         });
 
-        ///retrieve user details with session//
-        UserSession userSession = new UserSession(this);
-        HashMap<String, String> getUserDetails = userSession.getUserDetailFromSession();
-        String userName = getUserDetails.get(UserSession.KEY_USERNAME);
-        activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s", userName));
 
         ////by default home home menu is selected in bottom navigation///
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentManage, new HomeFragment()).commit();
@@ -170,7 +162,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UserSession userSession = new UserSession(MainDashboard.this);
         ///when item clicked change activity or something else///
 
         if(item.getItemId() == R.id.Meal_Planner){
@@ -186,11 +177,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
             startActivity(new Intent(MainDashboard.this, SignUp.class));
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
-//        if(item.getItemId() == R.id.nav_logout){
-//            userSession.logout();
-//            startActivity(new Intent(MainDashboard.this,MainDashboard.class));
-//            finish();
-//        }
+
 
         return false;
     }

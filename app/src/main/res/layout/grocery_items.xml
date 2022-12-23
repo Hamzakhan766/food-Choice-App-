@@ -24,7 +24,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 >
 
@@ -39,7 +39,6 @@
                         android:id="@+id/groceryName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Grocery Tilte"
                         android:padding="25dp"
                         android:textSize="20sp"
                         android:textColor="@color/color_secondary"
@@ -52,8 +51,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/groceryImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="30dp"
                 android:src="@drawable/meal_planner"
                 android:layout_alignParentEnd="true"/>

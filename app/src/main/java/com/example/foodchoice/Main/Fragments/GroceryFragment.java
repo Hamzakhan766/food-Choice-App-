@@ -44,7 +44,8 @@ public class GroceryFragment extends Fragment {
         groceryModelArrayList = new ArrayList<>();
         adapter = new GroceryAdapter(getContext(),groceryModelArrayList);
         rvGrocery.setAdapter(adapter);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+
+        databaseReference.orderByKey().addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,7 +61,6 @@ public class GroceryFragment extends Fragment {
 
             }
         });
-
 
         return view;
     }

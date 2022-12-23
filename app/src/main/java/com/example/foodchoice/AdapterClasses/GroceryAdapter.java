@@ -35,7 +35,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull GroceryAdapter.ViewHolder holder, int position) {
-        holder.groceryName.setText(groceryModelArrayList.get(position).getGroceryName());
+        holder.grocery_name.setText(groceryModelArrayList.get(position).getGroceryName());
     }
 
     @Override
@@ -44,14 +44,11 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
     }
 
     public class ViewHolder  extends  RecyclerView.ViewHolder{
-        TextView groceryName;
+        TextView grocery_name;
         CircleImageView groceryImageUrl;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            groceryName = itemView.findViewById(R.id.groceryName);
-            groceryImageUrl = itemView.findViewById(R.id.groceryImage);
-
+            grocery_name = itemView.findViewById(R.id.groceryName);
         }
     }
 }

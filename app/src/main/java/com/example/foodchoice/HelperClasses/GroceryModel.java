@@ -3,6 +3,11 @@ package com.example.foodchoice.HelperClasses;
 public class GroceryModel {
     String groceryName, groceryImageUrl;
 
+    //default constructor///
+    public GroceryModel(){
+
+    }
+
     public GroceryModel(String groceryName, String groceryImageUrl) {
         this.groceryName = groceryName;
         this.groceryImageUrl = groceryImageUrl;
