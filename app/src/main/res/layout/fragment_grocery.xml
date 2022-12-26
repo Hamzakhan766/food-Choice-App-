@@ -26,10 +26,12 @@
             android:background="@drawable/search_bg"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawablePadding="6dp"
-            android:hint="@string/search_cat"
+            android:hint="@string/search_grocery"
             android:importantForAutofill="no"
             android:maxLines="1"
             android:padding="16dp"
+            android:fontFamily="@font/custom_font_regular"
+            android:textSize="14sp"
             android:textColorHint="@color/color_secondary"
             android:textCursorDrawable="@null"
             android:inputType="text" />

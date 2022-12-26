@@ -43,7 +43,8 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="@string/break_fast"
-              android:textSize="30sp"
+              android:fontFamily="@font/custom_font_regular"
+              android:textSize="25sp"
               android:textStyle="bold"
               android:textColor="@color/color_white"
               />
@@ -94,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lunch"
-                android:textSize="30sp"
+                android:fontFamily="@font/custom_font_regular"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/color_secondary"
                 />
@@ -144,7 +146,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Dinner"
-                android:textSize="30sp"
+                android:fontFamily="@font/custom_font_regular"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/color_white"
                 />

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     DatabaseReference database;
     RecyclerView catNameRecycler;
+    FrCategoryAdapter frCategoryAdapter;
     ArrayList<CategoryModel> categoryModelArrayList;
 
     @Override
@@ -36,6 +37,33 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
+        ///category Name recycler view/////
+        catNameRecycler = view.findViewById(R.id.catNameRecycler);
+        catNameRecycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        catNameRecycler.setHasFixedSize(true);
+
+        database = FirebaseDatabase.getInstance().getReference("Categories");
+        categoryModelArrayList = new ArrayList<>();
+        frCategoryAdapter = new FrCategoryAdapter(getContext(),categoryModelArrayList);
+        catNameRecycler.setAdapter(frCategoryAdapter);
+
+        ///Revoke child value of category node////
+        database.orderByChild("categoryName").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    CategoryModel categoryModel = ds.getValue(CategoryModel.class);
+                    categoryModelArrayList.add(categoryModel);
+                }
+                frCategoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return view;
 

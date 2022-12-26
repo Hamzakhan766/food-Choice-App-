@@ -37,6 +37,7 @@
               android:layout_height="wrap_content"
               android:layout_margin="20dp"
               android:text="Biryani"
+              android:fontFamily="@font/custom_font_regular"
               android:textColor="@color/color_secondary"
               android:textSize="17sp"
               android:textStyle="bold"

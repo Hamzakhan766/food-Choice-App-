@@ -9,7 +9,7 @@
     <View
         android:id="@+id/mpView"
         android:layout_width="match_parent"
-        android:layout_height="202dp"
+        android:layout_height="122dp"
         android:background="@drawable/meal_planner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,8 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="@string/break_fast"
-              android:textSize="30sp"
+              android:textSize="10sp"
+              android:fontFamily="@font/custom_font_regular"
               android:textStyle="bold"
               android:textColor="@color/color_white"
               />
@@ -51,7 +52,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="@string/break_todo"
-              android:textSize="13sp"
+              android:textSize="8sp"
               android:textColor="@color/color_white"
               />
           
@@ -94,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lunch"
-                android:textSize="30sp"
+                android:fontFamily="@font/custom_font_regular"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:textColor="@color/color_secondary"
                 />
@@ -102,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lunch_todo"
-                android:textSize="13sp"
+                android:textSize="8sp"
                 android:textColor="@color/color_secondary"
                 />
 
@@ -144,7 +146,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Dinner"
-                android:textSize="30sp"
+                android:textSize="10sp"
+                android:fontFamily="@font/custom_font_regular"
                 android:textStyle="bold"
                 android:textColor="@color/color_white"
                 />
@@ -152,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dinner_todo"
-                android:textSize="13sp"
+                android:textSize="8sp"
                 android:textColor="@color/color_white"
                 />
 

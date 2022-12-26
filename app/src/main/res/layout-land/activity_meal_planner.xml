@@ -16,7 +16,7 @@
         <View
             android:id="@+id/mpView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="240dp"
             android:background="@drawable/meal_planner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/mpView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mpView">
 
@@ -49,11 +49,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/custom_font_regular"
                     android:text="@string/break_fast"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
                     android:textColor="@color/color_white"
-                    />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,11 +100,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/custom_font_regular"
                     android:text="@string/lunch"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
                     android:textColor="@color/color_secondary"
-                    />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -150,11 +150,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/custom_font_regular"
                     android:text="@string/Dinner"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
                     android:textColor="@color/color_white"
-                    />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

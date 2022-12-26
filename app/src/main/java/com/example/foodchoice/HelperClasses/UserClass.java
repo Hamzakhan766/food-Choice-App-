@@ -1,24 +1,23 @@
 package com.example.foodchoice.HelperClasses;
 
 public class UserClass {
-    String user_id, user_fullName, user_UserName, user_UseEmail, user_UserPhone, user_UserPassword;
+    String user_id, user_fullName, user_UserName, user_UseEmail, user_UserPhone, user_UserPassword, user_UserImage;
 
     ////empty constructor///
     public UserClass() {
     }
 
-    ///without user_id/////
-    public UserClass(String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword) {
+    public UserClass(String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword, String user_UserImage) {
         this.user_fullName = user_fullName;
         this.user_UserName = user_UserName;
         this.user_UseEmail = user_UseEmail;
         this.user_UserPhone = user_UserPhone;
         this.user_UserPassword = user_UserPassword;
+        this.user_UserImage = user_UserImage;
     }
 
-    ////with user_id///
-    public UserClass(String user_id, String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword) {
-        this.user_id = user_id;
+    ///without user_id/////
+    public UserClass(String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword) {
         this.user_fullName = user_fullName;
         this.user_UserName = user_UserName;
         this.user_UseEmail = user_UseEmail;
@@ -73,4 +72,9 @@ public class UserClass {
     public void setUser_UserPassword(String user_UserPassword) {
         this.user_UserPassword = user_UserPassword;
     }
+
+
+
+
+
 }

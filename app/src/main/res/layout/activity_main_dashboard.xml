@@ -61,6 +61,7 @@
                         android:layout_centerInParent="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/color_secondary"
+                        android:fontFamily="@font/custom_font_regular"
                         android:textSize="18sp"
                         tools:ignore="RelativeOverlap" />
 

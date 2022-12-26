@@ -41,6 +41,7 @@
                         android:layout_height="wrap_content"
                         android:padding="25dp"
                         android:textSize="20sp"
+                        android:fontFamily="@font/custom_font_regular"
                         android:textColor="@color/color_secondary"
                         android:textStyle="bold"
                         />

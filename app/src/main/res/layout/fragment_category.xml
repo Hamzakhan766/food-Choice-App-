@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/edSearch"
+                android:id="@+id/searchCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -30,6 +30,8 @@
                 android:importantForAutofill="no"
                 android:maxLines="1"
                 android:padding="16dp"
+                android:fontFamily="@font/custom_font_regular"
+                android:textSize="14sp"
                 android:textColorHint="@color/color_secondary"
                 android:textCursorDrawable="@null"
                 android:inputType="text" />

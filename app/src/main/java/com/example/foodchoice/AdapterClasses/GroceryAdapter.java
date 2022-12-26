@@ -1,5 +1,6 @@
 package com.example.foodchoice.AdapterClasses;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,12 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
     @Override
     public int getItemCount() {
         return groceryModelArrayList.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void FilterGrocery(ArrayList<GroceryModel> groceryFilter) {
+        this.groceryModelArrayList = groceryFilter;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder  extends  RecyclerView.ViewHolder{

@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:text="Burger"
+            android:fontFamily="@font/custom_font_regular"
             android:textColor="@color/color_secondary"
             android:layout_gravity="center"
             />

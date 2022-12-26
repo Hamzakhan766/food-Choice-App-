@@ -30,6 +30,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
 
+
     @NonNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,8 +54,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return categoryModelArrayList.size();
     }
 
-
-
+    @SuppressLint("NotifyDataSetChanged")
+    public void FilterList(ArrayList<CategoryModel> filterCategory) {
+        this.categoryModelArrayList = filterCategory;
+        notifyDataSetChanged();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

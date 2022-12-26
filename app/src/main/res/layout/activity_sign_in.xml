@@ -36,7 +36,8 @@
                     app:layout_collapseMode="parallax"
                     android:text="@string/phrase"
                     android:textColor="@color/color_secondary"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/custom_font_regular"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
@@ -152,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/primary_buttons"
                 android:text="@string/sign_in"
+                android:fontFamily="@font/custom_font_regular"
                 android:textColor="@color/color_secondary"
                 />
 
@@ -173,6 +175,7 @@
                 android:textSize="18sp"
                 android:text="@string/or"
                 android:textStyle="bold"
+                android:fontFamily="@font/custom_font_regular"
                 android:layout_gravity="center"
                 />
 
@@ -191,6 +194,7 @@
                     android:drawableLeft="@drawable/google"
                     android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                     android:text="@string/google"
+                    android:fontFamily="@font/custom_font_regular"
                     android:textColor="@color/color_secondary"
                     app:backgroundTint="@null" />
 
@@ -202,6 +206,7 @@
                     android:drawableLeft="@drawable/facebook"
                     android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                     android:text="@string/facebook"
+                    android:fontFamily="@font/custom_font_regular"
                     android:textColor="@color/color_secondary"
                     app:backgroundTint="@null" />
 

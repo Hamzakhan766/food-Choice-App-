@@ -17,10 +17,13 @@ import androidx.fragment.app.FragmentManager;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.SignIn;
 import com.example.foodchoice.AccountCredentials.SignUp;
+import com.example.foodchoice.Main.Categories.CategoryIndex;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
+import com.example.foodchoice.Main.Grocery.GroceryIndex;
 import com.example.foodchoice.Main.MealPlanner.MealPlanner;
+import com.example.foodchoice.Main.Recipe.RecipeIndex;
 import com.example.foodchoice.R;
 import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
@@ -163,6 +166,21 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         ///when item clicked change activity or something else///
+
+        if(item.getItemId() == R.id.nav_all_categories){
+            startActivity(new Intent(MainDashboard.this, CategoryIndex.class));
+            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+        }
+
+        if(item.getItemId() == R.id.nav_grocery){
+            startActivity(new Intent(MainDashboard.this, GroceryIndex.class));
+            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+        }
+
+        if(item.getItemId() == R.id.nav_recipe){
+            startActivity(new Intent(MainDashboard.this, RecipeIndex.class));
+            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+        }
 
         if(item.getItemId() == R.id.Meal_Planner){
             startActivity(new Intent(MainDashboard.this, MealPlanner.class));

@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.foodchoice.AdapterClasses.CategoryAdapter;
 import com.example.foodchoice.HelperClasses.CategoryModel;
@@ -25,6 +28,7 @@ import java.util.ArrayList;
 
 
 public class CategoryFragment extends Fragment {
+    TextView edSearchCategory;
     RecyclerView rvCategory;
     CategoryAdapter adapter;
     ArrayList<CategoryModel> categoryModelArrayList;
@@ -64,6 +68,37 @@ public class CategoryFragment extends Fragment {
             }
         });
 
+        /////searching in category//////
+        edSearchCategory = view.findViewById(R.id.searchCategory);
+        edSearchCategory.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
         return view;
+    }
+
+    private void filter(String Text) {
+
+        ArrayList<CategoryModel> filterCategory = new ArrayList<>();
+
+        for(CategoryModel item : categoryModelArrayList){
+              if(item.getCategoryName().toLowerCase().contains(Text.toLowerCase())){
+                  filterCategory.add(item);
+              }
+        }
+         adapter.FilterList(filterCategory);
     }
 }

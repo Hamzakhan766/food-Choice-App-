@@ -33,9 +33,10 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     app:layout_collapseMode="parallax"
+                    android:fontFamily="@font/custom_font_regular"
                     android:text="@string/phrase_two"
                     android:textColor="@color/color_secondary"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="170dp"
@@ -81,12 +82,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/full_name"
+                app:helperText="Reqiured*"
+                app:helperTextEnabled="true"
+                app:errorEnabled="true"
+                app:helperTextTextColor="#B71C1C"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/color_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameChange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -103,6 +109,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/username"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#B71C1C"
+                app:errorEnabled="true"
+                app:helperText="Required*"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
@@ -110,6 +120,7 @@
                 app:startIconDrawable="@drawable/user">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userChange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -126,6 +137,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/email"
+                app:helperTextEnabled="true"
+                app:errorEnabled="true"
+                app:helperText="Required*"
+                app:helperTextTextColor="#B71C1C"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
@@ -133,6 +148,7 @@
                 app:startIconDrawable="@drawable/email">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailChange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
@@ -150,7 +166,12 @@
                 android:layout_marginBottom="12dp"
                 android:hint="@string/phone"
                 app:counterEnabled="true"
-                app:counterMaxLength="11"
+                app:prefixText="+92"
+                app:counterMaxLength="10"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#B71C1C"
+                app:errorEnabled="true"
+                app:helperText="Required*"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
@@ -158,6 +179,7 @@
                 app:startIconDrawable="@drawable/telephone">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneChange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone|number"
@@ -176,6 +198,9 @@
                 android:hint="@string/password"
                 app:counterEnabled="true"
                 app:counterMaxLength="16"
+                app:helperText="Required*"
+                app:helperTextTextColor="#B71C1C"
+                app:errorEnabled="true"
                 app:boxStrokeColor="@color/color_secondary"
                 app:boxStrokeWidthFocused="2dp"
                 app:hintTextColor="@color/color_secondary"
@@ -184,6 +209,7 @@
                 app:startIconDrawable="@drawable/password">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passChange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -200,6 +226,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/primary_buttons"
                 android:text="@string/sign_up"
+                android:fontFamily="@font/custom_font_regular"
                 android:textColor="@color/color_secondary" />
 
 
@@ -208,6 +235,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/or"
+                android:fontFamily="@font/custom_font_regular"
                 android:textColor="@color/color_secondary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -227,6 +255,7 @@
                     android:drawableLeft="@drawable/google"
                     android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                     android:text="@string/google"
+                    android:fontFamily="@font/custom_font_regular"
                     android:textColor="@color/color_secondary"
                     app:backgroundTint="@null" />
 
@@ -239,6 +268,7 @@
                     android:drawableLeft="@drawable/facebook"
                     android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                     android:text="@string/facebook"
+                    android:fontFamily="@font/custom_font_regular"
                     android:textColor="@color/color_secondary"
                     app:backgroundTint="@null" />
 
