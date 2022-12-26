@@ -11,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.WelcomeScreen;
+import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.R;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIMER = 6000;
     SharedPreferences onBoardingScreen;
+    SharedPreferences guestCheck;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 
+        guestCheck = getSharedPreferences("GuestLogin",MODE_PRIVATE);
 
 
 
@@ -44,7 +47,11 @@ public class SplashScreen extends AppCompatActivity {
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();
                 }
-
+                else if(guestCheck.getBoolean("GUEST_LOGIN" , false)){
+                    startActivity(new Intent(SplashScreen.this, MainDashboard.class));
+                    Animatoo.INSTANCE.animateFade(SplashScreen.this);
+                    finish();
+                }
                 else {
                     startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);

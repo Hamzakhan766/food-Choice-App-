@@ -2,10 +2,13 @@ package com.example.foodchoice.Main;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.SignIn;
 import com.example.foodchoice.AccountCredentials.SignUp;
+import com.example.foodchoice.HelperClasses.SessionManager;
 import com.example.foodchoice.Main.Categories.CategoryIndex;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
@@ -28,13 +32,16 @@ import com.example.foodchoice.R;
 import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
+import java.util.HashMap;
 
 public class MainDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     ActivityMainDashboardBinding activityMainDashboardBinding;
     static final float END_SCALE = 0.7f;
-
+    FirebaseAuth userAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +50,22 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         setContentView(activityMainDashboardBinding.getRoot());
 
 
-        //////open user profile activity////
-        activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> {
-            startActivity(new Intent(MainDashboard.this, UserProfile.class));
-            Animatoo.INSTANCE.animateSlideUp(MainDashboard.this);
-        });
+            SharedPreferences preferences = getSharedPreferences("GuestLogin",MODE_PRIVATE);
+            preferences.getBoolean("GUEST_LOGIN",false);
+            String text = preferences.getString("USERNAME","GUEST");
+            activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s", text));
+
+
+
+        if (preferences.getBoolean("GUEST_LOGIN", false)) {
+            activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> {
+                Toast.makeText(this, "You Are in Guest Mode Now...", Toast.LENGTH_LONG).show();
+            });
+
+            Menu nav_manu = activityMainDashboardBinding.drawerNav.getMenu();
+            nav_manu.findItem(R.id.nav_logout).setVisible(false);
+        }
+
 
 
         ////by default home home menu is selected in bottom navigation///
@@ -194,6 +212,12 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         if (item.getItemId() == R.id.nav_signUp) {
             startActivity(new Intent(MainDashboard.this, SignUp.class));
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+        }
+
+        if(item.getItemId() == R.id.nav_logout){
+            userAuth.signOut();
+            startActivity(new Intent(MainDashboard.this,SignIn.class));
+            finish();
         }
 
 

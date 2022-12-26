@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.foodchoice.HelperClasses.SessionManager;
 import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.R;
@@ -117,6 +118,10 @@ public class SignUp extends AppCompatActivity  {
                             public void onComplete(@NonNull Task<Void> task) {
                                 //////or debugging purpose///////
                                 if(task.isSuccessful()) {
+
+                                    //Create session//
+                                    SessionManager sessionManager = new SessionManager(SignUp.this);
+                                    sessionManager.createUserSession(UserName);
 
                                     /////redirecting user to main dashboard///
                                     Intent intent = new Intent(SignUp.this, MainDashboard.class);

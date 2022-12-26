@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.foodchoice.HelperClasses.SessionManager;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.databinding.ActivityWelcomeScreenBinding;
 
@@ -22,6 +23,13 @@ public class WelcomeScreen extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnGuest.setOnClickListener(v -> {
+
+            SharedPreferences preferences = getSharedPreferences("GuestLogin",MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("GUEST_LOGIN",true);
+            editor.putString("USERNAME","GUEST");
+
+            editor.commit();
 
             startActivity(new Intent(WelcomeScreen.this,MainDashboard.class));
             Animatoo.INSTANCE.animateFade(this);
