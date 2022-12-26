@@ -111,7 +111,7 @@ public class SignUp extends AppCompatActivity  {
                     if(task.isSuccessful()){
                         FirebaseUser firebaseUser = userAuth.getCurrentUser();
                         ///Save user into realtime database /////
-                        UserClass userModel = new UserClass(FullName,UserName,Email,Phone,Password);
+                        UserClass userModel = new UserClass(firebaseUser.getUid(),FullName,UserName,Email,Phone,Password);
                         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users");
                         dbRef.child(Objects.requireNonNull(firebaseUser).getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

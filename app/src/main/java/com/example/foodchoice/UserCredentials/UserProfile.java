@@ -21,10 +21,10 @@ public class UserProfile extends AppCompatActivity {
         setContentView(activityUserProfileBinding.getRoot());
 
 
-        activityUserProfileBinding.updateProfile.setOnClickListener(new View.OnClickListener() {
+        activityUserProfileBinding.MyInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserProfile.this, updateUserProfile.class));
+                startActivity(new Intent(UserProfile.this, myInformation.class));
             }
         });
 

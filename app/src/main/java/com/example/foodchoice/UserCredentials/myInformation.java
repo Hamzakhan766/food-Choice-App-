@@ -13,12 +13,10 @@ import android.widget.Toast;
 
 import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.databinding.ActivityUpdateUserProfileBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-
-public class updateUserProfile extends AppCompatActivity {
+public class myInformation extends AppCompatActivity {
     ActivityUpdateUserProfileBinding userProfileBinding;
     FirebaseAuth userAuth;
     Uri uri;
@@ -88,7 +83,7 @@ public class updateUserProfile extends AppCompatActivity {
 
                 }
                else {
-                    Toast.makeText(updateUserProfile.this, "Empty Result", Toast.LENGTH_LONG).show();
+                    Toast.makeText(myInformation.this, "Empty Result", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -19,6 +19,20 @@
         android:theme="@style/Theme.FoodChoice"
         tools:targetApi="31">
         <activity
+            android:name=".RecipeDetails"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddRecipe"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Main.Grocery.GroceryIndex"
             android:exported="false">
             <meta-data
@@ -40,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".UserCredentials.updateUserProfile"
+            android:name=".UserCredentials.myInformation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

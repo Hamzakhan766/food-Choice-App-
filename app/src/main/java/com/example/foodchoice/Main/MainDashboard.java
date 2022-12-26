@@ -33,6 +33,7 @@ import com.example.foodchoice.UserCredentials.UserProfile;
 import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.HashMap;
@@ -215,7 +216,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
-            userAuth.signOut();
+            
             startActivity(new Intent(MainDashboard.this,SignIn.class));
             finish();
         }
