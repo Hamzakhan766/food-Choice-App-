@@ -78,6 +78,25 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!--MealPlanner Strings-->
+    <string name="rec_slogan">Make your own recipe</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="edit_txt_rec">Write down recipe name</string>
+    <string name="htc">How to cook</string>
+    <string name="ad">Add direction</string>
+    <string name="step1">Step 1</string>
+    <string name="step2">Step 2</string>
+    <string name="gallery">Gallery</string>
+    <string name="gallery_btn">Upload cover image</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredients_btn">Add ingredients</string>
+    <string name="Video_edit">Add Video Url</string>
+    <string name="Video">Video</string>
+    <string name="add_cat">Add category</string>
+    <string name="add_des">Add description</string>
+    <string name="description">Description</string>
+    <string name="upload_recipe">Upload Recipe</string>
+
+
+
 </resources>
