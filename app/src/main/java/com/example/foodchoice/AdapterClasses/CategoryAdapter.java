@@ -30,7 +30,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
 
-
     @NonNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,6 +40,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
         holder.category_name.setText(categoryModelArrayList.get(position).getCategoryName());
+        Glide.with(context).load(categoryModelArrayList.get(position).getCategoryImageUri()).into(holder.categoryImageUri);
         holder.category_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView category_img;
+        ImageView categoryImageUri;
         TextView category_name;
         CardView category_cardView;
 
@@ -71,6 +71,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
             category_name = itemView.findViewById(R.id.category_name);
             category_cardView = itemView.findViewById(R.id.category_cardView);
+            categoryImageUri = itemView.findViewById(R.id.categoryImageUri);
 
         }
     }

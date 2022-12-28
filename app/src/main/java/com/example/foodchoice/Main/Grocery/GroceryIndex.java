@@ -44,7 +44,7 @@ public class GroceryIndex extends AppCompatActivity {
         groceryAdapter = new GroceryAdapter(this, groceryModelArrayList);
         groceryIndexBinding.GroceryIndex.setAdapter(groceryAdapter);
 
-        reference.orderByChild("groceryname").addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

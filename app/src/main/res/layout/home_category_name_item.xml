@@ -5,17 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
     app:cardElevation="6dp"
-    app:cardPreventCornerOverlap="false"
     android:layout_margin="4dp">
 
    <LinearLayout
-       android:id="@+id/catNameLayout"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical"
        >
 
        <ImageView
+           android:id="@+id/categoryImageUri"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:src="@drawable/welcome"
@@ -29,11 +28,13 @@
         android:id="@+id/CategoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:text="Pizza"
+        android:layout_margin="5dp"
+        android:background="@drawable/name_bg_transparent"
         android:fontFamily="@font/custom_font_regular"
         android:padding="10dp"
-        android:textColor="@color/color_secondary"
+        android:textColor="@color/color_white"
         android:layout_gravity="start|top"
         />
 

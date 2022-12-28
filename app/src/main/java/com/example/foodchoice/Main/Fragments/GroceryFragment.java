@@ -42,7 +42,7 @@ public class GroceryFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_grocery, container, false);
 
         rvGrocery = view.findViewById(R.id.groceryRecycler);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Grocery");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Groceries");
         rvGrocery.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         rvGrocery.setHasFixedSize(true);
 
@@ -50,7 +50,7 @@ public class GroceryFragment extends Fragment {
         adapter = new GroceryAdapter(getContext(),groceryModelArrayList);
         rvGrocery.setAdapter(adapter);
 
-        databaseReference.orderByKey().addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

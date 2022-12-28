@@ -247,12 +247,8 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
-            FirebaseAuth userAuth = FirebaseAuth.getInstance();
-            userAuth.signOut();
-
-            startActivity(new Intent(MainDashboard.this,SignIn.class));
-            finish();
-
+            currentAuth.signOut();
+            checkUserStatus();
         }
 
         return false;
@@ -275,4 +271,17 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         });
 
     }
+
+    public void checkUserStatus(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!= null){
+
+        }else {
+            startActivity(new Intent(MainDashboard.this,SignIn.class));
+            finish();
+        }
+    }
+
 }
+
+

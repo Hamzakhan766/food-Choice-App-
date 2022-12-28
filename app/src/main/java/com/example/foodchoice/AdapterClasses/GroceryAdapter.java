@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodchoice.HelperClasses.GroceryModel;
 import com.example.foodchoice.R;
 
@@ -37,6 +38,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull GroceryAdapter.ViewHolder holder, int position) {
         holder.grocery_name.setText(groceryModelArrayList.get(position).getGroceryName());
+        Glide.with(context).load(groceryModelArrayList.get(position).getGroceryImageUrl()).into(holder.groceryImageUrl);
     }
 
     @Override
@@ -56,6 +58,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             grocery_name = itemView.findViewById(R.id.groceryName);
+            groceryImageUrl = itemView.findViewById(R.id.GroceryImage);
         }
     }
 }

@@ -88,8 +88,10 @@ public class SignIn extends AppCompatActivity {
                             throw task.getException();
                         } catch (FirebaseAuthInvalidUserException e) {
                             EmailDialogBox();
+                            activitySignInBinding.progressBar.setVisibility(View.GONE);
                         } catch (FirebaseAuthInvalidCredentialsException e) {
                             InvalidDialogBox();
+                            activitySignInBinding.progressBar.setVisibility(View.GONE);
                         } catch (Exception e) {
                             Log.e(TAG, e.getMessage());
                         }

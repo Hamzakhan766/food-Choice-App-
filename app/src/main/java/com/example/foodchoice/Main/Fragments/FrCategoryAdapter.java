@@ -5,22 +5,25 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodchoice.HelperClasses.CategoryModel;
 import com.example.foodchoice.R;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class FrCategoryAdapter extends RecyclerView.Adapter<FrCategoryAdapter.ViewHolder> {
 
     Context context;
     ArrayList<CategoryModel> categoryModelArrayList;
-    int row_index = -1;
 
     public FrCategoryAdapter(Context context, ArrayList<CategoryModel> categoryModelArrayList) {
         this.context = context;
@@ -37,16 +40,7 @@ public class FrCategoryAdapter extends RecyclerView.Adapter<FrCategoryAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull FrCategoryAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.categoryName.setText(categoryModelArrayList.get(position).getCategoryName());
-        holder.catLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                row_index = position;
-            }
-        });
-        if (row_index == position)
-            holder.catLayout.setBackgroundResource(R.drawable.home_category_name_selected);
-        else
-            holder.catLayout.setBackgroundResource(R.drawable.home_category_name_bg);
+        Glide.with(context).load(categoryModelArrayList.get(position).getCategoryImageUri()).into(holder.categoryImageUri);
     }
 
     @Override
@@ -56,14 +50,12 @@ public class FrCategoryAdapter extends RecyclerView.Adapter<FrCategoryAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView categoryName;
-        LinearLayout catLayout;
-
+        ImageView categoryImageUri;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             categoryName = itemView.findViewById(R.id.CategoryName);
-            catLayout = itemView.findViewById(R.id.catNameLayout);
-
+            categoryImageUri = itemView.findViewById(R.id.categoryImageUri);
         }
     }
 }
