@@ -76,10 +76,6 @@ public class SplashScreen extends AppCompatActivity {
             finish();
         }
 
-        else {
-            startActivity(new Intent(SplashScreen.this, SignIn.class));
-            Animatoo.INSTANCE.animateFade(SplashScreen.this);
-            finish();
-        }
+
     }
 }
