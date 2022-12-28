@@ -1,7 +1,10 @@
 package com.example.foodchoice.HelperClasses;
 
 public class UserClass {
-    String user_id, user_fullName, user_UserName, user_UseEmail, user_UserPhone, user_UserPassword, user_UserImage;
+    String user_id, user_fullName, user_UserName, user_UseEmail, user_UserPhone, user_UserPassword;
+
+    public UserClass() {
+    }
 
     public UserClass(String user_id, String user_fullName, String user_UserName, String user_UseEmail, String user_UserPhone, String user_UserPassword) {
         this.user_id = user_id;
@@ -59,4 +62,7 @@ public class UserClass {
     public void setUser_UserPassword(String user_UserPassword) {
         this.user_UserPassword = user_UserPassword;
     }
+
+
+
 }

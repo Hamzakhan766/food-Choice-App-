@@ -22,18 +22,32 @@ public class AddRecipe extends AppCompatActivity {
         setContentView(addRecipeBinding.getRoot());
 
 
+
+
+
+       addRecipeBinding.nextStep.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               callNextScreen();
+           }
+       });
+    }
+
+    public void callNextScreen(){
+
         Intent intent = new Intent(AddRecipe.this,StepTwo.class);
         intent.putExtra("RecipeName",addRecipeBinding.RecipeName.getEditText().getText().toString());
         intent.putExtra("RecipeDescription",addRecipeBinding.RecipeDescription.getEditText().getText().toString());
         intent.putExtra("RecipeDirection",addRecipeBinding.RecipeDirection.getEditText().getText().toString());
 
 
-       addRecipeBinding.nextStep.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(intent);
-           }
-       });
+        Pair[] pairs = new Pair[2];
+        pairs[0] = new Pair<View , String>(addRecipeBinding.textChange,"titleChange");
+        pairs[1] = new Pair<View , String>(addRecipeBinding.nextStep,"nextActivity");
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AddRecipe.this,pairs);
+        startActivity(intent,options.toBundle());
+
     }
 
 

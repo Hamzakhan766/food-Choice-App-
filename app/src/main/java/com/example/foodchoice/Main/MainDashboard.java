@@ -1,6 +1,7 @@
 package com.example.foodchoice.Main;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,16 +12,16 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.AccountCredentials.SignIn;
 import com.example.foodchoice.AccountCredentials.SignUp;
-import com.example.foodchoice.HelperClasses.SessionManager;
+import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.Main.Categories.CategoryIndex;
 import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
@@ -34,15 +35,21 @@ import com.example.foodchoice.databinding.ActivityMainDashboardBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.HashMap;
 
 public class MainDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     ActivityMainDashboardBinding activityMainDashboardBinding;
     static final float END_SCALE = 0.7f;
-    FirebaseAuth userAuth;
+    SharedPreferences guestPreferences;
+    AlertDialog.Builder builder;
+    FirebaseAuth currentAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +58,44 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         setContentView(activityMainDashboardBinding.getRoot());
 
 
-            SharedPreferences preferences = getSharedPreferences("GuestLogin",MODE_PRIVATE);
-            preferences.getBoolean("GUEST_LOGIN",false);
-            String text = preferences.getString("USERNAME","GUEST");
-            activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s", text));
+        guestPreferences = getSharedPreferences("GuestLogin",MODE_PRIVATE);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference currentUserDetails = FirebaseDatabase.getInstance().getReference("Users");
 
-
-
-        if (preferences.getBoolean("GUEST_LOGIN", false)) {
-            activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> {
-                Toast.makeText(this, "You Are in Guest Mode Now...", Toast.LENGTH_LONG).show();
+        if(user != null){
+            activityMainDashboardBinding.userDashboardImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainDashboard.this, UserProfile.class));
+                }
             });
+            currentUserDetails.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        UserClass userModel = snapshot.getValue(UserClass.class);
+                        String userName = userModel.getUser_UserName();
+                        activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s",userName));
+                    }
+                }
 
-            Menu nav_manu = activityMainDashboardBinding.drawerNav.getMenu();
-            nav_manu.findItem(R.id.nav_logout).setVisible(false);
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
+        else{
+            if(guestPreferences.getBoolean("GUEST_LOGIN",false)){
+                activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> Toast.makeText(MainDashboard.this, "You Are in Guest Mode Now...", Toast.LENGTH_SHORT).show());
+                String guestname = guestPreferences.getString("USERNAME","Guest");
+                activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s",guestname));
+                Menu logoutBtn = activityMainDashboardBinding.drawerNav.getMenu();
+                logoutBtn.findItem(R.id.nav_logout).setVisible(false);
+            }
+
+        }
+
 
 
 
@@ -216,9 +246,24 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
-            
-            startActivity(new Intent(MainDashboard.this,SignIn.class));
-            finish();
+          builder.setTitle("Are you sure wanna logout ?")
+                  .setCancelable(true)
+                  .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                currentAuth = FirebaseAuth.getInstance();
+                currentAuth.signOut();
+                startActivity(new Intent(MainDashboard.this,SignIn.class));
+                finish();
+              }
+          }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+
+              }
+          });
+
+
         }
 
 

@@ -10,15 +10,19 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.foodchoice.AccountCredentials.SignIn;
 import com.example.foodchoice.AccountCredentials.WelcomeScreen;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIMER = 6000;
     SharedPreferences onBoardingScreen;
     SharedPreferences guestCheck;
+    FirebaseUser user;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         guestCheck = getSharedPreferences("GuestLogin",MODE_PRIVATE);
-
 
 
        ////splash screen handler////
@@ -52,6 +55,7 @@ public class SplashScreen extends AppCompatActivity {
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
                     finish();
                 }
+
                 else {
                     startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
@@ -60,5 +64,22 @@ public class SplashScreen extends AppCompatActivity {
             }
         },SPLASH_TIMER);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            startActivity(new Intent(SplashScreen.this, MainDashboard.class));
+            Animatoo.INSTANCE.animateFade(SplashScreen.this);
+            finish();
+        }
+
+        else {
+            startActivity(new Intent(SplashScreen.this, SignIn.class));
+            Animatoo.INSTANCE.animateFade(SplashScreen.this);
+            finish();
+        }
     }
 }

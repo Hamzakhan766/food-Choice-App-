@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.foodchoice.HelperClasses.SessionManager;
 import com.example.foodchoice.Main.MainDashboard;
 import com.example.foodchoice.databinding.ActivityWelcomeScreenBinding;
 

@@ -16,7 +16,6 @@ import java.util.Objects;
 public class StepTwo extends AppCompatActivity {
     ActivityStepTwoBinding stepTwoBinding;
     private final int Image_RequestCode = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +39,7 @@ public class StepTwo extends AppCompatActivity {
         stepTwoBinding.uploadRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadRecipe();
+                 uploadRecipe();
             }
         });
 
@@ -52,17 +51,17 @@ public class StepTwo extends AppCompatActivity {
     private void selectImage() {
         Intent getImage = new Intent(Intent.ACTION_PICK);
         getImage.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(getImage, Image_RequestCode);
+        startActivityForResult(getImage,Image_RequestCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == Image_RequestCode) {
-                stepTwoBinding.RecipeCoverImage.setImageURI(Objects.requireNonNull(data).getData());
-            }
+        if(resultCode == RESULT_OK){
+             if(requestCode == Image_RequestCode){
+                   stepTwoBinding.RecipeCoverImage.setImageURI(Objects.requireNonNull(data).getData());
+             }
         }
 
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +41,7 @@ public class SignIn extends AppCompatActivity {
             Animatoo.INSTANCE.animateSlideRight(SignIn.this);
         });
 
+
         ///Login functionalities////
        activitySignInBinding.loginBtn.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -62,6 +64,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful()){
+
 
                    Intent intent = new Intent(SignIn.this, MainDashboard.class);
                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
