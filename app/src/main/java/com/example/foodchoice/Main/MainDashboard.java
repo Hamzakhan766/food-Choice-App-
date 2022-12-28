@@ -70,6 +70,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
                 public void onClick(View v) {
                     startActivity(new Intent(MainDashboard.this, UserProfile.class));
                 }
+
             });
             currentUserDetails.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -86,6 +87,9 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
 
                 }
             });
+            Menu nav_menu = activityMainDashboardBinding.drawerNav.getMenu();
+            nav_menu.findItem(R.id.nav_login).setVisible(false);
+            nav_menu.findItem(R.id.nav_signUp).setVisible(false);
         }
         else{
             if(guestPreferences.getBoolean("GUEST_LOGIN",false)){
@@ -97,8 +101,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
             }
 
         }
-
-
 
 
         ////by default home home menu is selected in bottom navigation///
@@ -139,7 +141,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
             }
         });
     }
-
 
     /////drawer navigation///
     private void drawerNavigation() {
@@ -199,7 +200,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         });
     }
 
-
     //////handle back pressed  ////////
     @Override
     public void onBackPressed() {
@@ -210,7 +210,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
     }
-
 
     ////handle menu items clicked in drawer navigation////
     @SuppressLint("NonConstantResourceId")
@@ -248,6 +247,11 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
+            FirebaseAuth userAuth = FirebaseAuth.getInstance();
+            userAuth.signOut();
+
+            startActivity(new Intent(MainDashboard.this,SignIn.class));
+            finish();
 
         }
 
