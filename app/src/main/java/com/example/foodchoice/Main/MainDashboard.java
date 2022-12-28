@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,7 +50,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     ActivityMainDashboardBinding activityMainDashboardBinding;
     static final float END_SCALE = 0.7f;
     SharedPreferences guestPreferences;
-    AlertDialog.Builder builder;
     FirebaseAuth currentAuth;
 
     @Override
@@ -87,7 +89,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
         else{
             if(guestPreferences.getBoolean("GUEST_LOGIN",false)){
-                activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> Toast.makeText(MainDashboard.this, "You Are in Guest Mode Now...", Toast.LENGTH_SHORT).show());
+                activityMainDashboardBinding.userDashboardImage.setOnClickListener(v -> customDialogBox());
                 String guestname = guestPreferences.getString("USERNAME","Guest");
                 activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s",guestname));
                 Menu logoutBtn = activityMainDashboardBinding.drawerNav.getMenu();
@@ -246,29 +248,27 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
-          builder.setTitle("Are you sure wanna logout ?")
-                  .setCancelable(true)
-                  .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                currentAuth = FirebaseAuth.getInstance();
-                currentAuth.signOut();
-                startActivity(new Intent(MainDashboard.this,SignIn.class));
-                finish();
-              }
-          }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-
-              }
-          });
-
 
         }
-
 
         return false;
     }
 
 
+    public void customDialogBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainDashboard.this);
+        View view = LayoutInflater.from(MainDashboard.this).inflate(R.layout.guest_mode, null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        view.findViewById(R.id.btnOkay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+    }
 }

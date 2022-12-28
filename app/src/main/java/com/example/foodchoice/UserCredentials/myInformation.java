@@ -59,7 +59,7 @@ public class myInformation extends AppCompatActivity {
                     myInformationBinding.infoName.setText(fullname);
                     myInformationBinding.infoUserName.setText(username);
                     myInformationBinding.myInfoEmail.setText(email);
-                    myInformationBinding.myInfoPhone.setText(phone);
+                    myInformationBinding.myInfoPhone.setText(String.format("0 %s",phone));
 
                 }
             }

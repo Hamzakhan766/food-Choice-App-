@@ -133,6 +133,17 @@
                     android:textColor="@color/color_secondary"
                     android:textSize="11sp" />
 
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:indeterminate="true"
+                    android:indeterminateDrawable="@drawable/progressbar_custom"
+                    android:visibility="gone"
+                    />
+
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -216,5 +227,7 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
