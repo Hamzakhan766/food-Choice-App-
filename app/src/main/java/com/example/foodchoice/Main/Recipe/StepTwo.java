@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.foodchoice.databinding.ActivityStepTwoBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -89,7 +91,17 @@ public class StepTwo extends AppCompatActivity {
 
             }
         });
-        
+
+
+
+        stepTwoBinding.RecipeIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StepTwo.this,IngredientsSelected.class));
+                Animatoo.INSTANCE.animateFade(StepTwo.this);
+            }
+        });
+
 
         stepTwoBinding.uploadCoverImage.setOnClickListener(new View.OnClickListener() {
             @Override
