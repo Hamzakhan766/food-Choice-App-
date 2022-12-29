@@ -20,11 +20,6 @@ public class AddRecipe extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         addRecipeBinding = ActivityAddRecipeBinding.inflate(getLayoutInflater());
         setContentView(addRecipeBinding.getRoot());
-
-
-
-
-
        addRecipeBinding.nextStep.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
