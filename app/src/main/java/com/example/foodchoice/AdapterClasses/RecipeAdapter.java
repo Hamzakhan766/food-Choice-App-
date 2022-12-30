@@ -2,6 +2,7 @@ package com.example.foodchoice.AdapterClasses;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.example.foodchoice.HelperClasses.RecipeModel;
+import com.example.foodchoice.Main.Recipe.SingleRecipeDetails;
 import com.example.foodchoice.R;
 
 import java.util.ArrayList;
@@ -35,12 +38,34 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
        holder.RecipeNameCard.setText(recipeModelArrayList.get(position).getRecipeName());
        holder.RecipeServing.setText(recipeModelArrayList.get(position).getRecipeServing());
        holder.RecipeTimingCard.setText(recipeModelArrayList.get(position).getRecipeName());
        holder.recipeDescriptionCard.setText(recipeModelArrayList.get(position).getRecipeDescription());
         Glide.with(holder.RecipeImage.getContext()).load(recipeModelArrayList.get(position).getRecipeImageUrl()).into(holder.RecipeImage);
+
+        holder.RecipeCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SingleRecipeDetails.class);
+                intent.putExtra("SingleRecipeId",recipeModelArrayList.get(position).getRecipeID());
+                intent.putExtra("SingleRecipeImage",recipeModelArrayList.get(position).getRecipeImageUrl());
+                intent.putExtra("SingleRecipeName",recipeModelArrayList.get(position).getRecipeName());
+                intent.putExtra("SingleRecipeDescription",recipeModelArrayList.get(position).getRecipeDescription());
+                intent.putExtra("SingleRecipeDirection",recipeModelArrayList.get(position).getRecipeDirection());
+                intent.putExtra("SingleRecipeTiming",recipeModelArrayList.get(position).getRecipeTiming());
+                intent.putExtra("SingleRecipeServing",recipeModelArrayList.get(position).getRecipeServing());
+                intent.putExtra("SingleRecipeOIngredients",recipeModelArrayList.get(position).getRecipeIngredients());
+                intent.putExtra("SingleRecipeVideo",recipeModelArrayList.get(position).getRecipeVideoUrl());
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(new Intent(intent));
+                Animatoo.INSTANCE.animateDiagonal(context);
+            }
+        });
+
+
     }
 
     @Override

@@ -8,6 +8,7 @@ public class RecipeModel {
     String recipeTiming;
     String recipeServing;
     String userID;
+    String RecipeIngredients;
     String recipeImageUrl;
     String recipeCategoryID;
     String recipeVideoUrl;
@@ -15,13 +16,14 @@ public class RecipeModel {
     public RecipeModel() {
     }
 
-    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeTiming, String recipeServing, String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
+    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeTiming, String recipeServing, String recipeIngredients ,String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
         this.recipeID = recipeID;
         this.recipeName = recipeName;
         this.recipeDirection = recipeDirection;
         this.recipeDescription = recipeDescription;
         this.recipeTiming = recipeTiming;
         this.recipeServing = recipeServing;
+        RecipeIngredients = recipeIngredients;
         this.userID = userID;
         this.recipeImageUrl = recipeImageUrl;
         this.recipeCategoryID = recipeCategoryID;
@@ -106,5 +108,13 @@ public class RecipeModel {
 
     public void setRecipeVideoUrl(String recipeVideoUrl) {
         this.recipeVideoUrl = recipeVideoUrl;
+    }
+
+    public String getRecipeIngredients() {
+        return RecipeIngredients;
+    }
+
+    public void setRecipeIngredients(String recipeIngredients) {
+        RecipeIngredients = recipeIngredients;
     }
 }

@@ -561,6 +561,14 @@
                     android:text="@string/Video_edit"
                     app:backgroundTint="@null" />
 
+
+                <VideoView
+                    android:id="@+id/RecipeVideoUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="7dp"
+                    />
+
             </LinearLayout>
             <Button
                 android:id="@+id/uploadRecipe"

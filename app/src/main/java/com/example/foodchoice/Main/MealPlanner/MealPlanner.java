@@ -1,5 +1,6 @@
 package com.example.foodchoice.Main.MealPlanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,14 +22,14 @@ public class MealPlanner extends AppCompatActivity {
         mealPlannerBinding.breakfastCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                 startActivity(new Intent(MealPlanner.this,BreakfastRecipe.class));
             }
         });
 
         mealPlannerBinding.lunchCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MealPlanner.this,LunchRecipe.class));
             }
         });
 
@@ -36,7 +37,7 @@ public class MealPlanner extends AppCompatActivity {
         mealPlannerBinding.dinnerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MealPlanner.this,DinnerRecipe.class));
             }
         });
 
