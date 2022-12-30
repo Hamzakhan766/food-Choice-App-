@@ -16,7 +16,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
 
             <CheckBox
                 android:id="@+id/checkBox_ing"
@@ -38,7 +39,7 @@
                 android:textColor="@color/color_secondary"
                 android:text="Potato"
                 android:fontFamily="@font/custom_font_regular"
-                />
+                tools:ignore="HardcodedText" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -48,10 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|start"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ingredient_img"
             android:layout_width="45dp"
             android:layout_height="45dp"

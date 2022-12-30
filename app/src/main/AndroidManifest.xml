@@ -19,15 +19,14 @@
         android:theme="@style/Theme.FoodChoice"
         tools:targetApi="31">
         <activity
-            android:name=".Main.Recipe.IngredientsSelected"
+            android:name=".Main.Recipe.SingleRecipeDetails"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".Main.Recipe.StepTwo"
+            android:name=".Main.Recipe.IngredientsSelected"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,21 +41,24 @@
         </activity>
         <activity
             android:name=".Main.Grocery.GroceryIndex"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Main.Categories.CategoryIndex"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Main.Recipe.RecipeIndex"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -84,7 +86,8 @@
         </activity>
         <activity
             android:name=".Main.MainDashboard"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -121,6 +124,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

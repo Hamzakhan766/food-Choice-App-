@@ -30,8 +30,9 @@ public class IngredientsSelected extends AppCompatActivity implements ingredient
         binding = ActivityIngrediantsSelectedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getingredients();
+
         binding.btnadd.setOnClickListener(view -> {
-            Intent intent = new Intent(this,StepTwo.class);
+            Intent intent = new Intent(this,AddRecipe.class);
             intent.putExtra("ingredients",ingredients);
             startActivity(intent);
         });

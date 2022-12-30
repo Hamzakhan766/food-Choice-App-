@@ -1,13 +1,27 @@
 package com.example.foodchoice.HelperClasses;
 
 public class RecipeModel {
-  String recipeID,recipeName,recipeDirection,recipeDiscription,userID,recipeImageUrl,recipeCategoryID,recipeVideoUrl;
+    String recipeID;
+    String recipeName;
+    String recipeDirection;
+    String recipeDescription;
+    String recipeTiming;
+    String recipeServing;
+    String userID;
+    String recipeImageUrl;
+    String recipeCategoryID;
+    String recipeVideoUrl;
 
-    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDiscription, String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
+    public RecipeModel() {
+    }
+
+    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeTiming, String recipeServing, String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
         this.recipeID = recipeID;
         this.recipeName = recipeName;
         this.recipeDirection = recipeDirection;
-        this.recipeDiscription = recipeDiscription;
+        this.recipeDescription = recipeDescription;
+        this.recipeTiming = recipeTiming;
+        this.recipeServing = recipeServing;
         this.userID = userID;
         this.recipeImageUrl = recipeImageUrl;
         this.recipeCategoryID = recipeCategoryID;
@@ -38,12 +52,28 @@ public class RecipeModel {
         this.recipeDirection = recipeDirection;
     }
 
-    public String getRecipeDiscription() {
-        return recipeDiscription;
+    public String getRecipeDescription() {
+        return recipeDescription;
     }
 
-    public void setRecipeDiscription(String recipeDiscription) {
-        this.recipeDiscription = recipeDiscription;
+    public void setRecipeDescription(String recipeDescription) {
+        this.recipeDescription = recipeDescription;
+    }
+
+    public String getRecipeTiming() {
+        return recipeTiming;
+    }
+
+    public void setRecipeTiming(String recipeTiming) {
+        this.recipeTiming = recipeTiming;
+    }
+
+    public String getRecipeServing() {
+        return recipeServing;
+    }
+
+    public void setRecipeServing(String recipeServing) {
+        this.recipeServing = recipeServing;
     }
 
     public String getUserID() {
