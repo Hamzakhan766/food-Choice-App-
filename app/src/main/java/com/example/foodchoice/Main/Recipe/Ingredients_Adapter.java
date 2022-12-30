@@ -62,6 +62,10 @@ public class Ingredients_Adapter extends RecyclerView.Adapter<Ingredients_Adapte
         return groceryModelArrayList.size();
     }
 
+    public void filterIngredients(ArrayList<GroceryModel> filterGrocery) {
+        this.groceryModelArrayList = filterGrocery;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox_ing;
         TextView ingredient_name;

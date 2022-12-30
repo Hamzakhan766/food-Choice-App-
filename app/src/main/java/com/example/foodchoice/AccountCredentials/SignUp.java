@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -201,6 +202,18 @@ public class SignUp extends AppCompatActivity {
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                     finish();
+                                }else {
+                                    try {
+                                        throw task.getException();
+                                    }catch (FirebaseAuthInvalidUserException e){
+                                        EmailDialogBox();
+                                        activitySignUpBinding.progressBarRegister.setVisibility(View.GONE);
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        activitySignUpBinding.progressBarRegister.setVisibility(View.GONE);
+                                    }
+
                                 }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -222,6 +235,25 @@ public class SignUp extends AppCompatActivity {
     public void customDialogBox() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SignUp.this);
         View view = LayoutInflater.from(SignUp.this).inflate(R.layout.vaildate_empty_field_dialog, null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        view.findViewById(R.id.btnOkay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+    }
+
+
+    @SuppressLint("MissingInflatedId")
+    public void EmailDialogBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUp.this);
+        View view = LayoutInflater.from(SignUp.this).inflate(R.layout.email_alreday, null);
         builder.setView(view);
 
         final AlertDialog dialog = builder.show();

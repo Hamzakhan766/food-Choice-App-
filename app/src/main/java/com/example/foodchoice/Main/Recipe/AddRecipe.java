@@ -47,6 +47,7 @@ public class AddRecipe extends AppCompatActivity {
     FirebaseUser user = userAuth.getCurrentUser();
     ArrayList<Integer> cat_id;
     ArrayList<String> cat_Name;
+    String category_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class AddRecipe extends AppCompatActivity {
                     }
                     addRecipeBinding.catList.setAdapter(categoryAdapter);
                     categoryAdapter.notifyDataSetChanged();
+                    category_id = String.valueOf(cat_id);
                 }else {
                     Toast.makeText(AddRecipe.this, "category does not exist", Toast.LENGTH_SHORT).show();
                 }
@@ -137,7 +139,7 @@ public class AddRecipe extends AppCompatActivity {
 
         dialog.show();
 
-        if(imageUri != null && videoUri != null){
+        if(imageUri != null){
             ////////imageUploaded//////////
             final StorageReference reference = FirebaseStorage.getInstance().getReference("Recipe_Images").child(System.currentTimeMillis()+"");
             reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -167,23 +169,21 @@ public class AddRecipe extends AppCompatActivity {
                                               recipeModel.setRecipeTiming(Objects.requireNonNull(addRecipeBinding.RecipeTiming.getText()).toString().trim());
                                               recipeModel.setRecipeServing(Objects.requireNonNull(addRecipeBinding.RecipeServing.getText()).toString().trim());
                                               recipeModel.setUserID(user.getUid());
+                                              recipeModel.setRecipeCategoryID(category_id);
                                               recipeModel.setRecipeVideoUrl(videoUri.toString());
 
                                               recipe.child(Objects.requireNonNull(key)).setValue(recipeModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                   @Override
                                                   public void onComplete(@NonNull Task<Void> task) {
                                                       if(task.isSuccessful()){
-                                                          RecipeModel ingreModel = new RecipeModel();
-                                                          ingreModel.setRecipeIngredients(String.valueOf(ingredients));
-
-                                                          recipe.child(key).child("Ingredients").setValue(ingreModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                          recipe.child(key).child("Ingredients").setValue(ingredients).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                               @Override
                                                               public void onComplete(@NonNull Task<Void> task) {
-                                                                  dialog.dismiss();
                                                                   startActivity(new Intent(AddRecipe.this,RecipeIndex.class));
                                                                   finish();
                                                               }
                                                           });
+                                                          dialog.dismiss();
                                                       }else{
                                                           Toast.makeText(AddRecipe.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                                       }

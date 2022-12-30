@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.Recipe.IngredientsSelected">
-
+    tools:context=".Main.MealPlanner.DinnerRecipe">
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -17,28 +16,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/backSpace_diiner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/ingredients"
             android:fontFamily="@font/custom_font_regular"
+            android:text="Dinner Recipe"
             android:textColor="@color/color_secondary"
             android:textSize="20sp" />
-
-
 
 
     </RelativeLayout>
 
     <com.amar.library.ui.StickyScrollView
-        android:id="@+id/stickyScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:padding="18dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/btnadd">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+        app:stickyFooter="@id/AddRecipe"
+        app:stickyHeader="@id/RecipeSearch">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,30 +52,27 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/IngredientsSearch"
+                android:id="@+id/BreakfastRecipe"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:background="@drawable/search_bg"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/custom_font_regular"
-                android:hint="Search Ingredients"
+                android:hint="Search dinner recipe"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:textColorHint="@color/color_secondary"
                 android:textCursorDrawable="@null"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="14dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ingredients"
+                android:id="@+id/dinnerRecipeIndex"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
 
         </LinearLayout>
@@ -77,17 +80,22 @@
 
     </com.amar.library.ui.StickyScrollView>
 
-    <Button
-        android:id="@+id/btnadd"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addDinnerRecipe"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/secondary_buttons"
-        android:text="add ingredients"
-        app:backgroundTint="@null"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/color_main"
+        android:fontFamily="@font/custom_font_regular"
+        android:text="Add dinner recipe"
+        app:icon="@drawable/cooking"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
+        app:strokeColor="@color/color_secondary" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.foodchoice.Main.Recipe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +17,14 @@ public class SingleRecipeDetails extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         singleRecipeDetailsBinding =ActivitySingleRecipeDetailsBinding.inflate(getLayoutInflater());
         setContentView(singleRecipeDetailsBinding.getRoot());
+
+        singleRecipeDetailsBinding.SingleBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
         //////get details form single recipe items//////
         Glide.with(getApplicationContext()).load(getIntent().getStringExtra("SingleRecipeImage")).into(singleRecipeDetailsBinding.SingleRecipeImage);

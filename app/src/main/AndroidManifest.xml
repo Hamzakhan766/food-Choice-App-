@@ -19,6 +19,13 @@
         android:theme="@style/Theme.FoodChoice"
         tools:targetApi="31">
         <activity
+            android:name=".MyRecipe"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Main.MealPlanner.DinnerRecipe"
             android:exported="false">
             <meta-data
@@ -33,7 +40,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Main.MealPlanner.BreakfastRecipe"
+            android:name=".Main.MealPlanner.BreakFastRecipe"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

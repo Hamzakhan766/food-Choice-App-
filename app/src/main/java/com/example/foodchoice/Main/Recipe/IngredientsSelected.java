@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.foodchoice.HelperClasses.GroceryModel;
@@ -26,23 +29,57 @@ public class IngredientsSelected extends AppCompatActivity implements ingredient
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new Ingredients_Adapter(groceryModelArrayList,this,this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityIngrediantsSelectedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getingredients();
 
+
+
+        getingredients();
+        adapter = new Ingredients_Adapter(groceryModelArrayList,this,this);
         binding.btnadd.setOnClickListener(view -> {
             Intent intent = new Intent(this,AddRecipe.class);
             intent.putExtra("ingredients",ingredients);
             startActivity(intent);
         });
+
+
+        binding.IngredientsSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                  filter(editable.toString());
+            }
+        });
+
+
         binding.ingredients.setHasFixedSize(true);
         binding.ingredients.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         binding.ingredients.setAdapter(adapter);
     }
 
+    private void filter(String text) {
+        ArrayList<GroceryModel> filterGrocery = new ArrayList<>();
+        for (GroceryModel item : groceryModelArrayList){
+            if(item.getGroceryName().toLowerCase().contains(text.toLowerCase())){
+                filterGrocery.add(item);
+            }
+        }
+        adapter.filterIngredients(filterGrocery);
+
+    }
+
     private void getingredients() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Groceries");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("grocery");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

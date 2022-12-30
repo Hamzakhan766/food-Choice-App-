@@ -172,11 +172,11 @@
                 android:fontFamily="@font/custom_font_regular"
                 tools:ignore="HardcodedText" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="15dp"
-                android:id="@+id/SingleRecipeIngredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:id="@+id/SingleRecipeIngredients"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"

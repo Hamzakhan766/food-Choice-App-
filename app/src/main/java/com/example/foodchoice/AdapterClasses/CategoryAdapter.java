@@ -40,7 +40,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
         holder.category_name.setText(categoryModelArrayList.get(position).getCategoryName());
-        holder.category_description.setText(categoryModelArrayList.get(position).getCategoryDescription());
         Glide.with(holder.categoryImageUri.getContext()).load(categoryModelArrayList.get(position).getCategoryImageUri()).into(holder.categoryImageUri);
         holder.category_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +70,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             super(itemView);
 
             category_name = itemView.findViewById(R.id.category_name);
-            category_description = itemView.findViewById(R.id.category_description);
             category_cardView = itemView.findViewById(R.id.category_cardView);
             categoryImageUri = itemView.findViewById(R.id.categoryImageUri);
 

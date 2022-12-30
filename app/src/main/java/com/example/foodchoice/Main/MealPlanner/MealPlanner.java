@@ -22,7 +22,7 @@ public class MealPlanner extends AppCompatActivity {
         mealPlannerBinding.breakfastCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 startActivity(new Intent(MealPlanner.this,BreakfastRecipe.class));
+                 startActivity(new Intent(MealPlanner.this,BreakFastRecipe.class));
             }
         });
 

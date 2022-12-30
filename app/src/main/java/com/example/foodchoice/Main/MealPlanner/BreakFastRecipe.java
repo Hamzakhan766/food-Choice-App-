@@ -6,32 +6,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.foodchoice.databinding.ActivityLunchRecipeBinding;
+import com.example.foodchoice.databinding.ActivityBreakFastRecipeBinding;
 
-public class LunchRecipe extends AppCompatActivity {
-   ActivityLunchRecipeBinding lunchRecipeBinding;
+public class BreakFastRecipe extends AppCompatActivity {
+    ActivityBreakFastRecipeBinding breakFastRecipeBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        lunchRecipeBinding = ActivityLunchRecipeBinding.inflate(getLayoutInflater());
-        setContentView(lunchRecipeBinding.getRoot());
+        breakFastRecipeBinding = ActivityBreakFastRecipeBinding.inflate(getLayoutInflater());
+        setContentView(breakFastRecipeBinding.getRoot());
 
 
-        lunchRecipeBinding.backSpaceId.setOnClickListener(new View.OnClickListener() {
+        breakFastRecipeBinding.backSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                 onBackPressed();
+            }
+        });
+
+        breakFastRecipeBinding.addBreakFastRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
 
-        lunchRecipeBinding.lunchRecipeAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 }

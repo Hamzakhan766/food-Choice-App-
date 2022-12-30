@@ -36,7 +36,7 @@ public class GroceryIndex extends AppCompatActivity {
 
         groceryIndexBinding.groceryBack.setOnClickListener(v -> onBackPressed());
 
-        reference = FirebaseDatabase.getInstance().getReference("Groceries");
+        reference = FirebaseDatabase.getInstance().getReference("grocery");
         groceryIndexBinding.GroceryIndex.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         groceryIndexBinding.GroceryIndex.setHasFixedSize(true);
 
@@ -44,7 +44,7 @@ public class GroceryIndex extends AppCompatActivity {
         groceryAdapter = new GroceryAdapter(this, groceryModelArrayList);
         groceryIndexBinding.GroceryIndex.setAdapter(groceryAdapter);
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.orderByChild("groceryName").addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
