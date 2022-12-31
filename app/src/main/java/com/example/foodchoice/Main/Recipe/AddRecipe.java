@@ -179,11 +179,12 @@ public class AddRecipe extends AppCompatActivity {
                                                           recipe.child(key).child("Ingredients").setValue(ingredients).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                               @Override
                                                               public void onComplete(@NonNull Task<Void> task) {
+                                                                  dialog.dismiss();
                                                                   startActivity(new Intent(AddRecipe.this,RecipeIndex.class));
                                                                   finish();
                                                               }
                                                           });
-                                                          dialog.dismiss();
+
                                                       }else{
                                                           Toast.makeText(AddRecipe.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                                       }

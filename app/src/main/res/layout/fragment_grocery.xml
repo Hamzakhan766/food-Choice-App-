@@ -9,41 +9,54 @@
     android:padding="18dp">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/edGrocerySearch"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/search_bg"
-            android:drawableStart="@drawable/ic_baseline_search_24"
-            android:drawablePadding="6dp"
-            android:hint="@string/search_grocery"
-            android:importantForAutofill="no"
-            android:maxLines="1"
-            android:padding="16dp"
-            android:fontFamily="@font/custom_font_regular"
-            android:textSize="14sp"
-            android:textColorHint="@color/color_secondary"
-            android:textCursorDrawable="@null"
-            android:inputType="text" />
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edGrocerySearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_bg"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:drawablePadding="6dp"
+                android:hint="@string/search_grocery"
+                android:importantForAutofill="no"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:fontFamily="@font/custom_font_regular"
+                android:textSize="14sp"
+                android:textColorHint="@color/color_secondary"
+                android:textCursorDrawable="@null"
+                android:inputType="text" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/groceryRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groceryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

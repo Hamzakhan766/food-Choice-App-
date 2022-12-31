@@ -6,79 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".Main.Recipe.RecipeIndex">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:background="@color/color_white"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/recipe"
-            android:fontFamily="@font/custom_font_regular"
-            android:textColor="@color/color_secondary"
-            android:textSize="20sp" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
-    </RelativeLayout>
-
-    <com.amar.library.ui.StickyScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:stickyHeader="@id/RecipeSearch"
-        app:stickyFooter="@id/AddRecipe"
-        android:scrollbars="none"
-        android:layout_marginTop="10dp"
-        android:padding="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           >
-
-           <EditText
-               android:id="@+id/RecipeSearch"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/search_bg"
-               android:drawableStart="@drawable/ic_baseline_search_24"
-               android:drawablePadding="6dp"
-               android:hint="@string/search_hint"
-               android:textSize="14dp"
-               android:importantForAutofill="no"
-               android:inputType="text"
-               android:maxLines="1"
-               android:fontFamily="@font/custom_font_regular"
-               android:padding="16dp"
-               android:textColorHint="@color/color_secondary"
-               android:textCursorDrawable="@null" />
-
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/RecipeIndex"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/custom_font_regular"
+                    android:text="@string/recipe"
+                    android:textColor="@color/color_secondary"
+                    android:textSize="20sp" />
 
 
-       </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
 
-    </com.amar.library.ui.StickyScrollView>
+                <EditText
+                    android:id="@+id/RecipeSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/search_bg"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/custom_font_regular"
+                    android:hint="@string/search_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="16dp"
+                    android:textColorHint="@color/color_secondary"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RecipeIndex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/AddRecipe"
@@ -87,10 +94,10 @@
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:backgroundTint="@color/color_main"
-        android:text="Add Recipe"
-        android:fontFamily="@font/custom_font_regular"
         android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/color_main"
+        android:fontFamily="@font/custom_font_regular"
+        android:text="Add Recipe"
         app:icon="@drawable/cooking"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

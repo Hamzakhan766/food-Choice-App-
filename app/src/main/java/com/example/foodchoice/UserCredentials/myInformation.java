@@ -30,6 +30,8 @@ public class myInformation extends AppCompatActivity {
         myInformationBinding = ActivityMyInformationBinding.inflate(getLayoutInflater());
         setContentView(myInformationBinding.getRoot());
 
+
+
         myInformationBinding.myInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

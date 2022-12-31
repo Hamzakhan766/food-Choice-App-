@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,7 +55,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewHold
 
     public class ViewHolder  extends  RecyclerView.ViewHolder{
         TextView grocery_name;
-        CircleImageView groceryImageUrl;
+        ImageView groceryImageUrl;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             grocery_name = itemView.findViewById(R.id.groceryName);

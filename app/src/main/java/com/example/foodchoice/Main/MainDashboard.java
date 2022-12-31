@@ -30,7 +30,6 @@ import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
 import com.example.foodchoice.Main.Grocery.GroceryIndex;
-import com.example.foodchoice.Main.MealPlanner.MealPlanner;
 import com.example.foodchoice.Main.Recipe.RecipeIndex;
 import com.example.foodchoice.R;
 import com.example.foodchoice.UserCredentials.UserProfile;
@@ -50,8 +49,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
     ActivityMainDashboardBinding activityMainDashboardBinding;
     static final float END_SCALE = 0.7f;
     SharedPreferences guestPreferences;
-    FirebaseAuth currentAuth;
-
+    FirebaseAuth currentAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,8 +231,8 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.Meal_Planner){
-            startActivity(new Intent(MainDashboard.this, MealPlanner.class));
-            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+//            startActivity(new Intent(MainDashboard.this, MealPlanner.class));
+//            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
 
         if (item.getItemId() == R.id.nav_login) {
@@ -247,8 +245,19 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
         if(item.getItemId() == R.id.nav_logout){
-            currentAuth.signOut();
-            checkUserStatus();
+
+           SharedPreferences userLogout = getSharedPreferences("UserLogged",0);
+           SharedPreferences.Editor editor = userLogout.edit();
+           userLogout.getBoolean("User_Is_Logged_In",true);
+
+           currentAuth.signOut();
+
+           editor.clear();
+           editor.commit();
+           finish();
+
+            startActivity(new Intent(MainDashboard.this, SignIn.class));
+
         }
 
         return false;
@@ -272,15 +281,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
 
     }
 
-    public void checkUserStatus(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user!= null){
 
-        }else {
-            startActivity(new Intent(MainDashboard.this,SignIn.class));
-            finish();
-        }
-    }
 
 }
 

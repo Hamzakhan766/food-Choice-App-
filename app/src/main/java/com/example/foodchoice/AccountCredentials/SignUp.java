@@ -3,6 +3,7 @@ package com.example.foodchoice.AccountCredentials;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -197,6 +198,12 @@ public class SignUp extends AppCompatActivity {
                                 //////or debugging purpose///////
                                 if (task.isSuccessful()) {
                                     activitySignUpBinding.progressBarRegister.setVisibility(View.GONE);
+
+                                    SharedPreferences userLogin = getSharedPreferences("UserLogged",0);
+                                    SharedPreferences.Editor editor = userLogin.edit();
+                                    editor.putBoolean("User_Is_Logged_In",true);
+                                    editor.commit();
+
                                     /////redirecting user to main dashboard///
                                     Intent intent = new Intent(SignUp.this, MainDashboard.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

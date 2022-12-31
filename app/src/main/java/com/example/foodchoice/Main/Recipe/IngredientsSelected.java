@@ -99,7 +99,7 @@ public class IngredientsSelected extends AppCompatActivity implements ingredient
 
     @Override
     public void ingredientsQuantityChange(ArrayList<String> arrayList) {
-        Toast.makeText(this, ""+arrayList.size(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, arrayList.size()+"is selected", Toast.LENGTH_SHORT).show();
         ingredients=arrayList;
     }
 }

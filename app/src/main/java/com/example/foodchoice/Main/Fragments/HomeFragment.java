@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
         recipeModelArrayList = new ArrayList<>();
         frRecipeAdapter = new frRecipeAdapter(getContext(),recipeModelArrayList);
         specificRecipeWithCategory.setAdapter(frRecipeAdapter);
-        recipeRef.orderByChild("recipeName").limitToFirst(10).addValueEventListener(new ValueEventListener() {
+        recipeRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -103,8 +103,7 @@ public class HomeFragment extends Fragment {
                         recipeModelArrayList.add(recipeModel);
                     }
                     frRecipeAdapter.notifyDataSetChanged();
-                }else
-                    Toast.makeText(getContext(), "something wrong to fetch recipe ", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -122,7 +121,7 @@ public class HomeFragment extends Fragment {
         recipeModelArrayList = new ArrayList<>();
         recipeAdapter = new RecipeAdapter(getContext(),recipeModelArrayList);
         recipeRecycler.setAdapter(recipeAdapter);
-        recipeRef.orderByChild("recipeName").addValueEventListener(new ValueEventListener() {
+        recipeRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

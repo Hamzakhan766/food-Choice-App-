@@ -19,28 +19,7 @@
         android:theme="@style/Theme.FoodChoice"
         tools:targetApi="31">
         <activity
-            android:name=".MyRecipe"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Main.MealPlanner.DinnerRecipe"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Main.MealPlanner.LunchRecipe"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Main.MealPlanner.BreakFastRecipe"
+            android:name=".UserCredentials.MyRecipe"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -93,13 +72,6 @@
         </activity>
         <activity
             android:name=".UserCredentials.myInformation"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Main.MealPlanner.MealPlanner"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

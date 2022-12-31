@@ -49,19 +49,22 @@ public class MyRecipe extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipe");
         recipeBinding.myRecipeIndex.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false));
         recipeBinding.myRecipeIndex.setHasFixedSize(true);
-
-
         recipeAdapter = new RecipeAdapter(this,recipeModelArrayList);
         recipeBinding.myRecipeIndex.setAdapter(recipeAdapter);
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                RecipeModel recipeModel = snapshot.getValue(RecipeModel.class);
-                if(recipeModel.getUserID().equals(user.getUid())){
-                    recipeModelArrayList.add(recipeModel);
-                }else
-                    Toast.makeText(MyRecipe.this, "No recipe in your list", Toast.LENGTH_SHORT).show();
+
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    RecipeModel recipeModel = ds.getValue(RecipeModel.class);
+                    if(recipeModel.getUserID().equals(user.getUid())){
+                        recipeModelArrayList.add(recipeModel);
+                    }else
+                        Toast.makeText(MyRecipe.this, "No recipe in your list", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override

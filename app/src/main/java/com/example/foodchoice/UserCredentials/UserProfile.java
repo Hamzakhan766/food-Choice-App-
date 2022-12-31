@@ -31,6 +31,13 @@ public class UserProfile extends AppCompatActivity {
 
         activityUserProfileBinding.proback.setOnClickListener(v -> onBackPressed());
         activityUserProfileBinding.myInfoBtn.setOnClickListener(v -> startActivity(new Intent(UserProfile.this, myInformation.class)));
+        activityUserProfileBinding.myRecipeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfile.this,MyRecipe.class));
+            }
+        });
+
 
         showNameAndImage();
 

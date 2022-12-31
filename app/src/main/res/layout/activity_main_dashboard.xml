@@ -99,6 +99,7 @@
             app:cnb_iconSize="28dp"
             app:cnb_menuResource="@menu/bottom_menu"
             app:cnb_radius="8dp"
+            app:cnb_addBottomInset="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

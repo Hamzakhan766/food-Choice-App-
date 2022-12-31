@@ -21,8 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIMER = 6000;
     SharedPreferences onBoardingScreen;
-    SharedPreferences guestCheck;
-    FirebaseUser user;
+    SharedPreferences guestCheck,userCheck;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         guestCheck = getSharedPreferences("GuestLogin",MODE_PRIVATE);
-
+        userCheck = getSharedPreferences("UserLogged",0);
 
        ////splash screen handler////
         new Handler().postDelayed(new Runnable() {
@@ -56,6 +55,12 @@ public class SplashScreen extends AppCompatActivity {
                     finish();
                 }
 
+                else if(userCheck.getBoolean("User_Is_Logged_In",false)){
+                    startActivity(new Intent(SplashScreen.this, MainDashboard.class));
+                    Animatoo.INSTANCE.animateFade(SplashScreen.this);
+                    finish();
+                }
+
                 else {
                     startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                     Animatoo.INSTANCE.animateFade(SplashScreen.this);
@@ -66,17 +71,6 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            startActivity(new Intent(SplashScreen.this, MainDashboard.class));
-            Animatoo.INSTANCE.animateFade(SplashScreen.this);
-            finish();
-        }
-    }
-    
 
     
 }

@@ -40,8 +40,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
        holder.RecipeNameCard.setText(recipeModelArrayList.get(position).getRecipeName());
-       holder.RecipeServing.setText(recipeModelArrayList.get(position).getRecipeServing());
-       holder.RecipeTimingCard.setText(recipeModelArrayList.get(position).getRecipeName());
+       holder.RecipeServing.setText("Serving :"+recipeModelArrayList.get(position).getRecipeServing());
        holder.recipeDescriptionCard.setText(recipeModelArrayList.get(position).getRecipeDescription());
         Glide.with(holder.RecipeImage.getContext()).load(recipeModelArrayList.get(position).getRecipeImageUrl()).into(holder.RecipeImage);
 
@@ -54,14 +53,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 intent.putExtra("SingleRecipeName",recipeModelArrayList.get(position).getRecipeName());
                 intent.putExtra("SingleRecipeDescription",recipeModelArrayList.get(position).getRecipeDescription());
                 intent.putExtra("SingleRecipeDirection",recipeModelArrayList.get(position).getRecipeDirection());
-                intent.putExtra("SingleRecipeTiming",recipeModelArrayList.get(position).getRecipeTiming());
                 intent.putExtra("SingleRecipeServing",recipeModelArrayList.get(position).getRecipeServing());
                 intent.putExtra("SingleRecipeOIngredients",recipeModelArrayList.get(position).getRecipeIngredients());
                 intent.putExtra("SingleRecipeVideo",recipeModelArrayList.get(position).getRecipeVideoUrl());
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(new Intent(intent));
-                Animatoo.INSTANCE.animateDiagonal(context);
             }
         });
 
@@ -80,16 +77,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView RecipeNameCard,RecipeServing,RecipeTimingCard,recipeDescriptionCard;
+        TextView RecipeNameCard,RecipeServing,recipeDescriptionCard;
         ImageView RecipeImage;
         CardView RecipeCardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             RecipeNameCard = itemView.findViewById(R.id.RecipeNameCard);
             RecipeServing = itemView.findViewById(R.id.RecipeServing);
-            RecipeTimingCard = itemView.findViewById(R.id.RecipeTiming);
             recipeDescriptionCard = itemView.findViewById(R.id.recipeDescriptionCard);
             RecipeImage = itemView.findViewById(R.id.RecipeImage);
+
+            RecipeCardView = itemView.findViewById(R.id.RecipeCardView);
 
         }
     }

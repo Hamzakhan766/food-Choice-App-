@@ -1,82 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".Main.Categories.CategoryIndex">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_white"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/CategoryBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/categories"
-            android:fontFamily="@font/custom_font_regular"
-            android:textColor="@color/color_secondary"
-            android:textSize="20sp" />
+        android:orientation="vertical">
 
 
-    </RelativeLayout>
-
-    <com.amar.library.ui.StickyScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="18dp"
-        android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
-
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@color/color_white"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/CategorySearch"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/CategoryBack"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/search_bg"
-                android:drawableStart="@drawable/ic_baseline_search_24"
-                android:drawablePadding="6dp"
-                android:hint="@string/search_cat"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textSize="14sp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/categories"
                 android:fontFamily="@font/custom_font_regular"
-                android:padding="16dp"
-                android:textColorHint="@color/color_secondary"
-                android:textCursorDrawable="@null" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/CategoryIndex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" />
+                android:textColor="@color/color_secondary"
+                android:textSize="20sp" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/CategorySearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bg"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="6dp"
+            android:hint="@string/search_cat"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/custom_font_regular"
+            android:padding="16dp"
+            android:textColorHint="@color/color_secondary"
+            android:textCursorDrawable="@null" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CategoryIndex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
 
 
-    </com.amar.library.ui.StickyScrollView>
+
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
