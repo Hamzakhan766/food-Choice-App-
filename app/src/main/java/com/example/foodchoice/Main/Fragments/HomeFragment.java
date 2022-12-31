@@ -34,11 +34,10 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     DatabaseReference database,recipeRef;
-    RecyclerView catNameRecycler,recipeRecycler,specificRecipeWithCategory;
+    RecyclerView catNameRecycler,recipeRecycler;
     Button cat,trend,recipe;
     FrCategoryAdapter frCategoryAdapter;
     RecipeAdapter recipeAdapter;
-    frRecipeAdapter frRecipeAdapter;
     ArrayList<CategoryModel> categoryModelArrayList;
     ArrayList<RecipeModel> recipeModelArrayList;
 
@@ -81,34 +80,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-
-        //////////trending Recipe//////////
-        specificRecipeWithCategory = view.findViewById(R.id.specificRecipeWithCategory);
-        specificRecipeWithCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        specificRecipeWithCategory.setHasFixedSize(true);
-        recipeRef = FirebaseDatabase.getInstance().getReference("Recipe");
-        recipeModelArrayList = new ArrayList<>();
-        frRecipeAdapter = new frRecipeAdapter(getContext(),recipeModelArrayList);
-        specificRecipeWithCategory.setAdapter(frRecipeAdapter);
-        recipeRef.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        RecipeModel recipeModel = dataSnapshot.getValue(RecipeModel.class);
-                        recipeModelArrayList.add(recipeModel);
-                    }
-                    frRecipeAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

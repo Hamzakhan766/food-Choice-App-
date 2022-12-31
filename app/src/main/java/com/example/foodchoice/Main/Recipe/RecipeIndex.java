@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -35,8 +36,12 @@ public class RecipeIndex extends AppCompatActivity {
         recipeIndexBinding = ActivityRecipeIndexBinding.inflate(getLayoutInflater());
         setContentView(recipeIndexBinding.getRoot());
 
-        recipeIndexBinding.AddRecipe.setOnClickListener(v -> startActivity(new Intent(RecipeIndex.this,AddRecipe.class)));
-
+        recipeIndexBinding.AddRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecipeIndex.this,CreateRecipe.class));
+            }
+        });
 
         reference = FirebaseDatabase.getInstance().getReference("Recipe");
         recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

@@ -38,7 +38,7 @@ public class IngredientsSelected extends AppCompatActivity implements ingredient
         getingredients();
         adapter = new Ingredients_Adapter(groceryModelArrayList,this,this);
         binding.btnadd.setOnClickListener(view -> {
-            Intent intent = new Intent(this,AddRecipe.class);
+            Intent intent = new Intent(this,CreateRecipe.class);
             intent.putExtra("ingredients",ingredients);
             startActivity(intent);
         });

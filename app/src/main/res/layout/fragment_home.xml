@@ -96,45 +96,6 @@
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout4" />
 
 
-        <!--new Recipe's-->
-        <RelativeLayout
-            android:id="@+id/relativeLayout6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/catNameRecycler">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/custom_font_regular"
-                android:text="Trending Recipe's"
-                android:textColor="@color/color_secondary"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:id="@+id/seeAllTrend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="See all"
-                android:textColor="@color/color_secondary"
-                android:background="#00000000"
-                android:textAllCaps="false"
-                tools:ignore="HardcodedText" />
-
-        </RelativeLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/specificRecipeWithCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout6" />
 
        <!--Rec Recipe-->
         <RelativeLayout
@@ -145,7 +106,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/specificRecipeWithCategory">
+            app:layout_constraintTop_toBottomOf="@+id/catNameRecycler">
 
 
             <TextView

@@ -5,7 +5,6 @@ public class RecipeModel {
     String recipeName;
     String recipeDirection;
     String recipeDescription;
-    String recipeTiming;
     String recipeServing;
     String userID;
     String RecipeIngredients;
@@ -16,12 +15,11 @@ public class RecipeModel {
     public RecipeModel() {
     }
 
-    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeTiming, String recipeServing, String recipeIngredients ,String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
+    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeServing, String recipeIngredients ,String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
         this.recipeID = recipeID;
         this.recipeName = recipeName;
         this.recipeDirection = recipeDirection;
         this.recipeDescription = recipeDescription;
-        this.recipeTiming = recipeTiming;
         this.recipeServing = recipeServing;
         RecipeIngredients = recipeIngredients;
         this.userID = userID;
@@ -62,13 +60,6 @@ public class RecipeModel {
         this.recipeDescription = recipeDescription;
     }
 
-    public String getRecipeTiming() {
-        return recipeTiming;
-    }
-
-    public void setRecipeTiming(String recipeTiming) {
-        this.recipeTiming = recipeTiming;
-    }
 
     public String getRecipeServing() {
         return recipeServing;
