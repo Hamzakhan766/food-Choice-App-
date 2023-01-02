@@ -37,13 +37,11 @@ public class SingleRecipeDetails extends AppCompatActivity {
         });
 
 
-       setSupportActionBar(singleRecipeDetailsBinding.toolbar);
-
         //////get details form single recipe items//////
         Glide.with(getApplicationContext()).load(getIntent().getStringExtra("SingleRecipeImage")).into(singleRecipeDetailsBinding.SingleRecipeImage);
         singleRecipeDetailsBinding.SingleRecipeName.setText(getIntent().getStringExtra("SingleRecipeName"));
         singleRecipeDetailsBinding.SingleRecipeDescription.setText(getIntent().getStringExtra("SingleRecipeDescription"));
-        singleRecipeDetailsBinding.SingleRecipeServing.setText(getIntent().getStringExtra("SingleRecipeServing"));
+        singleRecipeDetailsBinding.SingleRecipeServing.setText("Serving: " +getIntent().getStringExtra("SingleRecipeServing"));
         singleRecipeDetailsBinding.SingleRecipeDirection.setText(getIntent().getStringExtra("SingleRecipeDirection"));
         String VideoUri = getIntent().getStringExtra("SingleRecipeVideo");
 

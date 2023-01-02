@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:contentScrim="@color/color_main"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <ImageView
@@ -31,9 +32,6 @@
                 android:id="@+id/toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
-                app:contentInsetStartWithNavigation="0dp"
-                app:contentInsetStart="0dp"
-                app:popupTheme="@style/Theme.FoodChoice"
                 app:layout_collapseMode="pin" >
 
                 <RelativeLayout
@@ -114,7 +112,7 @@
                     android:id="@+id/SingleRecipeCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/name_bg_transparent"
                     android:padding="12dp"
                     android:text="category"
