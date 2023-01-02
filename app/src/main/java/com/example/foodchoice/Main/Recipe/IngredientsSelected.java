@@ -41,6 +41,7 @@ public class IngredientsSelected extends AppCompatActivity implements ingredient
             Intent intent = new Intent(this,CreateRecipe.class);
             intent.putExtra("ingredients",ingredients);
             startActivity(intent);
+            finish();
         });
 
 

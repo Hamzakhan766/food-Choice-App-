@@ -27,6 +27,13 @@
             android:icon="@drawable/groceries"
             />
 
+
+        <item
+            android:id="@+id/nav_createRecipe"
+            android:title="Create Recipe"
+            android:icon="@drawable/cooking"
+            />
+
         <item
             android:id="@+id/Meal_Planner"
             android:title="@string/meal_planner"

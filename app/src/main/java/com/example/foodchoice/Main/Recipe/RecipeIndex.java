@@ -36,12 +36,6 @@ public class RecipeIndex extends AppCompatActivity {
         recipeIndexBinding = ActivityRecipeIndexBinding.inflate(getLayoutInflater());
         setContentView(recipeIndexBinding.getRoot());
 
-        recipeIndexBinding.AddRecipe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RecipeIndex.this,CreateRecipe.class));
-            }
-        });
 
         reference = FirebaseDatabase.getInstance().getReference("Recipe");
         recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

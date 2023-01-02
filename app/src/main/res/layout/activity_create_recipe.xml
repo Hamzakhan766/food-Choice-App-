@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
+    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
     android:nestedScrollingEnabled="false"
     android:background="@color/color_main"
     tools:context=".Main.Recipe.CreateRecipe">

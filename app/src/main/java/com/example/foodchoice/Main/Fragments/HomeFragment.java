@@ -21,6 +21,7 @@ import com.example.foodchoice.AdapterClasses.RecipeAdapter;
 import com.example.foodchoice.HelperClasses.CategoryModel;
 import com.example.foodchoice.HelperClasses.RecipeModel;
 import com.example.foodchoice.Main.Categories.CategoryIndex;
+import com.example.foodchoice.Main.Recipe.CreateRecipe;
 import com.example.foodchoice.Main.Recipe.RecipeIndex;
 import com.example.foodchoice.R;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     DatabaseReference database,recipeRef;
     RecyclerView catNameRecycler,recipeRecycler;
-    Button cat,trend,recipe;
+    Button cat,recipe;
     FrCategoryAdapter frCategoryAdapter;
     RecipeAdapter recipeAdapter;
     ArrayList<CategoryModel> categoryModelArrayList;
@@ -51,11 +52,10 @@ public class HomeFragment extends Fragment {
 
         /////buttons////
         cat = view.findViewById(R.id.seeAllCategories);
-        trend = view.findViewById(R.id.seeAllTrend);
         recipe = view.findViewById(R.id.seeAllRecipe);
         cat.setOnClickListener(v -> startActivity(new Intent(getContext(), CategoryIndex.class)));
-        trend.setOnClickListener(v -> startActivity(new Intent(getContext(), RecipeIndex.class)));
         recipe.setOnClickListener(v -> startActivity(new Intent(getContext(),RecipeIndex.class)));
+
 
         ///category Name recycler view/////
         catNameRecycler = view.findViewById(R.id.catNameRecycler);

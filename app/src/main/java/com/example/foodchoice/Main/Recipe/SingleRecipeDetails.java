@@ -2,7 +2,10 @@ package com.example.foodchoice.Main.Recipe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class SingleRecipeDetails extends AppCompatActivity {
     ActivitySingleRecipeDetailsBinding singleRecipeDetailsBinding;
@@ -32,29 +37,26 @@ public class SingleRecipeDetails extends AppCompatActivity {
         });
 
 
+       setSupportActionBar(singleRecipeDetailsBinding.toolbar);
+
         //////get details form single recipe items//////
         Glide.with(getApplicationContext()).load(getIntent().getStringExtra("SingleRecipeImage")).into(singleRecipeDetailsBinding.SingleRecipeImage);
         singleRecipeDetailsBinding.SingleRecipeName.setText(getIntent().getStringExtra("SingleRecipeName"));
         singleRecipeDetailsBinding.SingleRecipeDescription.setText(getIntent().getStringExtra("SingleRecipeDescription"));
         singleRecipeDetailsBinding.SingleRecipeServing.setText(getIntent().getStringExtra("SingleRecipeServing"));
         singleRecipeDetailsBinding.SingleRecipeDirection.setText(getIntent().getStringExtra("SingleRecipeDirection"));
+        String VideoUri = getIntent().getStringExtra("SingleRecipeVideo");
 
-        DatabaseReference getUserName = FirebaseDatabase.getInstance().getReference("Users");
-        getUserName.addValueEventListener(new ValueEventListener() {
+        singleRecipeDetailsBinding.SingleRecipeVideo.setVideoURI(Uri.parse(VideoUri));
+        singleRecipeDetailsBinding.SingleRecipeVideo.start();
+        singleRecipeDetailsBinding.SingleRecipeVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                      String userName = dataSnapshot.child("user_UserName").getValue().toString();
-                      singleRecipeDetailsBinding.SingleRecipeUserName.setText(userName);
-                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onPrepared(MediaPlayer mp) {
 
             }
         });
 
 
     }
+
 }

@@ -24,18 +24,21 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/welcome"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                app:layout_collapseMode="parallax"/>
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/Theme.FoodChoice"
                 app:layout_collapseMode="pin" >
-
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <ImageView
                         android:id="@+id/SingleBackBtn"
                         android:layout_width="wrap_content"
@@ -45,6 +48,9 @@
                         tools:ignore="ContentDescription" />
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
+
+
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
@@ -109,11 +115,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/color_secondary"
                     android:background="@drawable/name_bg_transparent"
-                    android:text="category"
                     android:padding="12dp"
+                    android:text="category"
+                    android:textColor="@color/color_secondary"
                     android:textSize="19sp"
                     tools:ignore="HardcodedText" />
 
@@ -164,6 +169,15 @@
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"/>-->
 
+
+            <VideoView
+                android:id="@+id/SingleRecipeVideo"
+                android:layout_width="match_parent"
+                android:layout_marginTop="9dp"
+                android:layout_height="300dp"/>
+
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,20 +191,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/color_secondary"
                     android:fontFamily="@font/custom_font_regular"
                     android:text="Uploaded by user"
+                    android:textColor="@color/color_secondary"
                     tools:ignore="HardcodedText" />
 
             </RelativeLayout>
-
-           <VideoView
-               android:id="@+id/SingleRecipeVideo"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               />
 
         </LinearLayout>
 

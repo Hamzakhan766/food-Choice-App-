@@ -54,6 +54,27 @@
 
         </LinearLayout>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/newCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="13dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:src="@drawable/biryani"
+                android:scaleType="centerCrop"
+                />
+
+
+        </androidx.cardview.widget.CardView>
+
+
         <!--categories-->
         <RelativeLayout
             android:id="@+id/relativeLayout4"
@@ -62,7 +83,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/newCard">
 
 
             <TextView
@@ -94,7 +115,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout4" />
-
 
 
        <!--Rec Recipe-->
@@ -131,11 +151,13 @@
                 tools:ignore="HardcodedText" />
 
         </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipeRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />

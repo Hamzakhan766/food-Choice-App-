@@ -1,7 +1,6 @@
 package com.example.foodchoice.Main;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,8 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +27,8 @@ import com.example.foodchoice.Main.Fragments.CategoryFragment;
 import com.example.foodchoice.Main.Fragments.GroceryFragment;
 import com.example.foodchoice.Main.Fragments.HomeFragment;
 import com.example.foodchoice.Main.Grocery.GroceryIndex;
+import com.example.foodchoice.Main.MealPlan.Index;
+import com.example.foodchoice.Main.Recipe.CreateRecipe;
 import com.example.foodchoice.Main.Recipe.RecipeIndex;
 import com.example.foodchoice.R;
 import com.example.foodchoice.UserCredentials.UserProfile;
@@ -96,6 +95,7 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
                 activityMainDashboardBinding.userDashboardName.setText(String.format("Hi, %s",guestname));
                 Menu logoutBtn = activityMainDashboardBinding.drawerNav.getMenu();
                 logoutBtn.findItem(R.id.nav_logout).setVisible(false);
+                logoutBtn.findItem(R.id.nav_createRecipe).setVisible(false);
             }
 
         }
@@ -217,22 +217,24 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
 
         if(item.getItemId() == R.id.nav_all_categories){
             startActivity(new Intent(MainDashboard.this, CategoryIndex.class));
-            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
 
         if(item.getItemId() == R.id.nav_grocery){
             startActivity(new Intent(MainDashboard.this, GroceryIndex.class));
-            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
 
         if(item.getItemId() == R.id.nav_recipe){
             startActivity(new Intent(MainDashboard.this, RecipeIndex.class));
-            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
         }
 
+
+        if (item.getItemId() == R.id.nav_createRecipe){
+            startActivity(new Intent(MainDashboard.this, CreateRecipe.class));
+        }
+
+
         if(item.getItemId() == R.id.Meal_Planner){
-//            startActivity(new Intent(MainDashboard.this, MealPlanner.class));
-//            activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);
+            startActivity(new Intent(MainDashboard.this, Index.class));
         }
 
         if (item.getItemId() == R.id.nav_login) {

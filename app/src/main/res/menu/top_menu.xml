@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+      <item
+          android:id="@+id/breakFast"
+          android:title="Break Fast"
+          app:cnb_backgroundColor="@color/color_main"
+          app:cnb_iconColor="@color/color_secondary"
+          app:cnb_textColor="@color/color_secondary"
+          android:menuCategory="secondary"/>
+
+        <item
+            android:id="@+id/Lunch"
+            android:title="Lunch"
+            app:cnb_backgroundColor="@color/color_main"
+            app:cnb_iconColor="@color/color_secondary"
+            app:cnb_textColor="@color/color_secondary"
+            android:menuCategory="secondary"/>
+
+
+        <item
+            android:id="@+id/Dinner"
+            android:title="Dinner"
+            app:cnb_backgroundColor="@color/color_main"
+            app:cnb_iconColor="@color/color_secondary"
+            app:cnb_textColor="@color/color_secondary"
+            android:menuCategory="secondary"/>
+
+</menu>

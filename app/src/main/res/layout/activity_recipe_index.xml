@@ -87,21 +87,5 @@
 
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/AddRecipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/color_main"
-        android:fontFamily="@font/custom_font_regular"
-        android:text="Add Recipe"
-        app:icon="@drawable/cooking"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/color_secondary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
