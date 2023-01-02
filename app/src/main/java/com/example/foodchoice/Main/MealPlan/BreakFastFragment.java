@@ -9,12 +9,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodchoice.R;
-public class BreakFastFragment extends Fragment {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+public class BreakFastFragment extends Fragment {
+  FloatingActionButton breakfast;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_break_fast, container, false);
+        View view =  inflater.inflate(R.layout.fragment_break_fast, container, false);
+
+
+        breakfast = view.findViewById(R.id.AddBrRecipe);
+        breakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+
+
+
+
+        return view;
     }
 }

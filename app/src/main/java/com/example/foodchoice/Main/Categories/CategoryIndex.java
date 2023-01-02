@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.foodchoice.AdapterClasses.CategoryAdapter;
 import com.example.foodchoice.HelperClasses.CategoryModel;
@@ -51,7 +52,6 @@ public class CategoryIndex extends AppCompatActivity {
         categoryIndexBinding.CategoryIndex.setAdapter(categoryAdapter);
 
         reference.orderByChild("categoryName").addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()){
@@ -93,6 +93,10 @@ public class CategoryIndex extends AppCompatActivity {
         for(CategoryModel item : categoryModelArrayList){
             if(item.getCategoryName().toLowerCase().contains(Text.toLowerCase())){
                 filterCategory.add(item);
+            }if(filterCategory.isEmpty()){
+
+                Toast.makeText(this, "No item Found", Toast.LENGTH_SHORT).show();
+
             }
         }
         categoryAdapter.FilterList(filterCategory);

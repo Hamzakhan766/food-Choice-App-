@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodchoice.AdapterClasses.CategoryAdapter;
 import com.example.foodchoice.HelperClasses.CategoryModel;
@@ -97,7 +98,9 @@ public class CategoryFragment extends Fragment {
         for(CategoryModel item : categoryModelArrayList){
               if(item.getCategoryName().toLowerCase().contains(Text.toLowerCase())){
                   filterCategory.add(item);
-              }
+              }if(filterCategory.isEmpty()){
+                Toast.makeText(getContext(), "No item found", Toast.LENGTH_SHORT).show();
+            }
         }
          adapter.FilterList(filterCategory);
     }

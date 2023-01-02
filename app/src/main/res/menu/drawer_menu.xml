@@ -35,12 +35,6 @@
             />
 
         <item
-            android:id="@+id/Meal_Planner"
-            android:title="@string/meal_planner"
-            android:icon="@drawable/meal"
-            />
-
-        <item
             android:id="@+id/nav_login"
             android:title="@string/sign_in"
             android:icon="@drawable/login"

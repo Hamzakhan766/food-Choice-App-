@@ -15,7 +15,17 @@ public class RecipeModel {
     public RecipeModel() {
     }
 
-    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeServing, String recipeIngredients ,String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
+    public RecipeModel(String recipeID, String recipeName, String recipeDescription, String recipeServing, String userID, String recipeImageUrl, String recipeCategoryID) {
+        this.recipeID = recipeID;
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.recipeServing = recipeServing;
+        this.userID = userID;
+        this.recipeImageUrl = recipeImageUrl;
+        this.recipeCategoryID = recipeCategoryID;
+    }
+
+    public RecipeModel(String recipeID, String recipeName, String recipeDirection, String recipeDescription, String recipeServing, String recipeIngredients , String userID, String recipeImageUrl, String recipeCategoryID, String recipeVideoUrl) {
         this.recipeID = recipeID;
         this.recipeName = recipeName;
         this.recipeDirection = recipeDirection;

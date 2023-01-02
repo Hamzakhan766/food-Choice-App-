@@ -19,7 +19,6 @@ public class Index extends AppCompatActivity {
         indexBinding = ActivityIndexBinding.inflate(getLayoutInflater());
         setContentView(indexBinding.getRoot());
 
-
         topNavigation();
     }
 

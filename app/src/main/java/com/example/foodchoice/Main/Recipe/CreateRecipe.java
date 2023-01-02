@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.MediaController;
 import android.widget.Toast;
@@ -156,7 +157,17 @@ public class CreateRecipe extends AppCompatActivity {
                 uploadRecipe();
             }
         });
+        createRecipeBinding.catList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_id =String.valueOf( cat_id.get(position));
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         DatabaseReference category = FirebaseDatabase.getInstance().getReference("Categories");
         cat_id = new ArrayList<Integer>();
@@ -174,7 +185,6 @@ public class CreateRecipe extends AppCompatActivity {
 
                     createRecipeBinding.catList.setAdapter(categoryAdapter);
                     categoryAdapter.notifyDataSetChanged();
-                    category_id = String.valueOf(cat_id);
                 }
             }
 
@@ -230,6 +240,8 @@ public class CreateRecipe extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                 dialog.dismiss();
+                                                                startActivity(new Intent(CreateRecipe.this, MainDashboard.class));
+                                                                finish();
                                                             }
                                                         });
                                                     }
@@ -246,9 +258,6 @@ public class CreateRecipe extends AppCompatActivity {
                                     Toast.makeText(CreateRecipe.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-
-                            startActivity(new Intent(CreateRecipe.this, MainDashboard.class));
-                            finish();
                         }
 
                     });

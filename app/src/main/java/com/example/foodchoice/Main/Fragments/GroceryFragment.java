@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodchoice.AdapterClasses.GroceryAdapter;
 import com.example.foodchoice.HelperClasses.CategoryModel;
@@ -95,6 +96,8 @@ public class GroceryFragment extends Fragment {
         for (GroceryModel item : groceryModelArrayList){
             if(item.getGroceryName().toLowerCase().contains(Text.toLowerCase())){
                 groceryFilter.add(item);
+            }if(groceryFilter.isEmpty()){
+                Toast.makeText(getContext(), "No item found ", Toast.LENGTH_SHORT).show();
             }
         }
          adapter.FilterGrocery(groceryFilter);

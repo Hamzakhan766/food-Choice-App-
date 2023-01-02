@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodchoice.AdapterClasses.CategoryAdapter;
@@ -37,6 +40,7 @@ public class HomeFragment extends Fragment {
     DatabaseReference database,recipeRef;
     RecyclerView catNameRecycler,recipeRecycler;
     Button cat,recipe;
+    TextView edSearch;
     FrCategoryAdapter frCategoryAdapter;
     RecipeAdapter recipeAdapter;
     ArrayList<CategoryModel> categoryModelArrayList;
@@ -67,7 +71,6 @@ public class HomeFragment extends Fragment {
         catNameRecycler.setAdapter(frCategoryAdapter);
         ///Revoke child value of category node////
         database.orderByChild("categoryName").limitToFirst(10).addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
@@ -93,7 +96,6 @@ public class HomeFragment extends Fragment {
         recipeAdapter = new RecipeAdapter(getContext(),recipeModelArrayList);
         recipeRecycler.setAdapter(recipeAdapter);
         recipeRef.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -113,10 +115,47 @@ public class HomeFragment extends Fragment {
 
 
 
+        edSearch = view.findViewById(R.id.edSearch);
+        edSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                   filter(s.toString());
+
+
+            }
+        });
+
+
+
         return view;
 
     }
 
+    private void filter(String RecipeSearch) {
+
+        ArrayList<RecipeModel> RecipeFilterList = new ArrayList<>();
+
+        for (RecipeModel item : recipeModelArrayList){
+            if(item.getRecipeName().toLowerCase().contains(RecipeSearch.toLowerCase()) || item.getRecipeDescription().toLowerCase().contains(RecipeSearch.toLowerCase())){
+
+                RecipeFilterList.add(item);
+
+            }
+        }
+
+        recipeAdapter.RecipeFilter(RecipeFilterList);
+
+    }
 
 
 }

@@ -233,10 +233,6 @@ public class MainDashboard extends AppCompatActivity implements NavigationView.O
         }
 
 
-        if(item.getItemId() == R.id.Meal_Planner){
-            startActivity(new Intent(MainDashboard.this, Index.class));
-        }
-
         if (item.getItemId() == R.id.nav_login) {
             startActivity(new Intent(MainDashboard.this, SignIn.class));
             activityMainDashboardBinding.drawerMenu.closeDrawer(GravityCompat.START);

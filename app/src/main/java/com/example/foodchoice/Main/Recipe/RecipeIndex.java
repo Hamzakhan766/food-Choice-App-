@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class RecipeIndex extends AppCompatActivity {
     RecipeAdapter recipeAdapter;
     ArrayList<RecipeModel> recipeModelArrayList = new ArrayList<>();
     DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +40,75 @@ public class RecipeIndex extends AppCompatActivity {
 
 
         reference = FirebaseDatabase.getInstance().getReference("Recipe");
-        recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recipeIndexBinding.RecipeIndex.setHasFixedSize(true);
 
-        recipeAdapter = new RecipeAdapter(this,recipeModelArrayList);
+        recipeAdapter = new RecipeAdapter(this, recipeModelArrayList);
         recipeIndexBinding.RecipeIndex.setAdapter(recipeAdapter);
 
-        reference.orderByChild("recipeName").addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
+        reference.addValueEventListener(new ValueEventListener() {
+
+            String catName = "";
+            String uName = "";
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                         RecipeModel recipeModel = ds.getValue(RecipeModel.class);
-                         recipeModelArrayList.add(recipeModel);
+                if (snapshot.exists()) {
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+//                        RecipeModel recipeModel = ds.getValue(RecipeModel.class);
+
+                        String RecipeNameCard = ds.child("recipeName").getValue().toString();
+                        String RecipeImage = ds.child("recipeImageUrl").getValue().toString();
+                        String RecipeId = ds.getKey().toString();
+                        String RecipeServing = ds.child("recipeServing").getValue().toString();
+                        String recipeDescriptionCard = ds.child("recipeDescription").getValue().toString();
+                      String c_id =   ds.child("recipeCategoryID").getValue().toString();
+                        DatabaseReference categoryRef = FirebaseDatabase.getInstance().getReference("Categories");
+                        categoryRef.child("categoryId").equalTo(c_id).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                                    String key = dataSnapshot.getKey().toString();
+//                                    if (key.equals(c_id)) {
+//                                        catName = dataSnapshot.child("categoryName").getValue().toString();
+                                        Log.d("cat name", snapshot.toString());
+//                                    }
+                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users");
+                                userRef.addValueEventListener(new ValueEventListener() {
+                                                                  @Override
+                                                                  public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                      for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                                                          String uId = ds.child("userID").getValue().toString();
+                                                                          if (dataSnapshot.getKey().equals(ds.child("userID").getValue().toString())) {
+                                                                              uName = dataSnapshot.child("user_UserName").getValue().toString();
+                                                                              RecipeModel recipeModel = new RecipeModel(RecipeId, RecipeNameCard, recipeDescriptionCard, RecipeServing, uName, RecipeImage, catName);
+                                                                              recipeModelArrayList.add(recipeModel);
+                                                                              Log.d("my record", catName);
+                                                                          }
+                                                                      }
+
+                                                                      recipeAdapter = new RecipeAdapter(RecipeIndex.this, recipeModelArrayList);
+                                                                      recipeIndexBinding.RecipeIndex.setAdapter(recipeAdapter);
+                                                                  }
+
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
                     }
+
+
                     recipeAdapter.notifyDataSetChanged();
                 } else
                     Toast.makeText(RecipeIndex.this, "something went wrong to fetch recipes", Toast.LENGTH_SHORT).show();
@@ -78,7 +134,7 @@ public class RecipeIndex extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-               filter(s.toString());
+                filter(s.toString());
             }
         });
 

@@ -64,6 +64,7 @@
         android:fontFamily="@font/custom_font_regular"
         android:text="Add breakfast recipe"
         app:icon="@drawable/cooking"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
