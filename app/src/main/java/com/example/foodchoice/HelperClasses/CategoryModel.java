@@ -4,6 +4,7 @@ public class CategoryModel {
     String categoryName;
     String categoryDescription;
     String categoryImageUri;
+    String categoryId;
 
     public CategoryModel(){
 
@@ -13,6 +14,21 @@ public class CategoryModel {
         this.categoryName = categoryName;
         this.categoryImageUri = categoryImageUri;
         this.categoryDescription = categoryDescription;
+    }
+
+    public CategoryModel(String categoryName, String categoryDescription, String categoryImageUri, String categoryId) {
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+        this.categoryImageUri = categoryImageUri;
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {

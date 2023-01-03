@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.foodchoice.AdapterClasses.RecipeAdapter;
+import com.example.foodchoice.HelperClasses.CategoryModel;
 import com.example.foodchoice.HelperClasses.RecipeModel;
+import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.databinding.ActivityRecipeIndexBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +30,11 @@ import java.util.ArrayList;
 public class RecipeIndex extends AppCompatActivity {
     ActivityRecipeIndexBinding recipeIndexBinding;
     RecipeAdapter recipeAdapter;
-    ArrayList<RecipeModel> recipeModelArrayList = new ArrayList<>();
+    ArrayList<RecipeModel> recipeModelArrayList = new ArrayList<RecipeModel>();
     DatabaseReference reference;
+    String catName, uName;
+    RecipeModel recipeModel;
+    ArrayList<UserClass> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class RecipeIndex extends AppCompatActivity {
         recipeIndexBinding = ActivityRecipeIndexBinding.inflate(getLayoutInflater());
         setContentView(recipeIndexBinding.getRoot());
 
+        userList=new ArrayList<UserClass>();
 
         reference = FirebaseDatabase.getInstance().getReference("Recipe");
         recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -45,82 +51,6 @@ public class RecipeIndex extends AppCompatActivity {
 
         recipeAdapter = new RecipeAdapter(this, recipeModelArrayList);
         recipeIndexBinding.RecipeIndex.setAdapter(recipeAdapter);
-
-        reference.addValueEventListener(new ValueEventListener() {
-
-            String catName = "";
-            String uName = "";
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot ds : snapshot.getChildren()) {
-//                        RecipeModel recipeModel = ds.getValue(RecipeModel.class);
-
-                        String RecipeNameCard = ds.child("recipeName").getValue().toString();
-                        String RecipeImage = ds.child("recipeImageUrl").getValue().toString();
-                        String RecipeId = ds.getKey().toString();
-                        String RecipeServing = ds.child("recipeServing").getValue().toString();
-                        String recipeDescriptionCard = ds.child("recipeDescription").getValue().toString();
-                      String c_id =   ds.child("recipeCategoryID").getValue().toString();
-                        DatabaseReference categoryRef = FirebaseDatabase.getInstance().getReference("Categories");
-                        categoryRef.child("categoryId").equalTo(c_id).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                                    String key = dataSnapshot.getKey().toString();
-//                                    if (key.equals(c_id)) {
-//                                        catName = dataSnapshot.child("categoryName").getValue().toString();
-                                        Log.d("cat name", snapshot.toString());
-//                                    }
-                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users");
-                                userRef.addValueEventListener(new ValueEventListener() {
-                                                                  @Override
-                                                                  public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                      for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                                                          String uId = ds.child("userID").getValue().toString();
-                                                                          if (dataSnapshot.getKey().equals(ds.child("userID").getValue().toString())) {
-                                                                              uName = dataSnapshot.child("user_UserName").getValue().toString();
-                                                                              RecipeModel recipeModel = new RecipeModel(RecipeId, RecipeNameCard, recipeDescriptionCard, RecipeServing, uName, RecipeImage, catName);
-                                                                              recipeModelArrayList.add(recipeModel);
-                                                                              Log.d("my record", catName);
-                                                                          }
-                                                                      }
-
-                                                                      recipeAdapter = new RecipeAdapter(RecipeIndex.this, recipeModelArrayList);
-                                                                      recipeIndexBinding.RecipeIndex.setAdapter(recipeAdapter);
-                                                                  }
-
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-
-                    }
-
-
-                    recipeAdapter.notifyDataSetChanged();
-                } else
-                    Toast.makeText(RecipeIndex.this, "something went wrong to fetch recipes", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(RecipeIndex.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
         recipeIndexBinding.RecipeSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -138,7 +68,42 @@ public class RecipeIndex extends AppCompatActivity {
             }
         });
 
+//        DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("Users");
+//        reference2.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+//                for (DataSnapshot ds : snapshot1.getChildren()) {
+//                    userList.add(ds.getValue(UserClass.class));
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot ds : snapshot.getChildren()){
+                        RecipeModel rm=ds.getValue(RecipeModel.class);
+                        recipeModelArrayList.add(rm);
+                    }
+                    Log.d("Array ",recipeModelArrayList.toString());
+                    recipeAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RecipeIndex.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     private void filter(String Text) {
 

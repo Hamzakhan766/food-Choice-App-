@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
-    private static final int SPLASH_TIMER = 6000;
+    private static final int SPLASH_TIMER = 1000;
     SharedPreferences onBoardingScreen;
     SharedPreferences guestCheck,userCheck;
     @Override
