@@ -18,6 +18,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.example.foodchoice.HelperClasses.CategoryModel;
 import com.example.foodchoice.HelperClasses.RecipeModel;
+import com.example.foodchoice.HelperClasses.UserClass;
 import com.example.foodchoice.Main.Recipe.RecipeIndex;
 import com.example.foodchoice.Main.Recipe.SingleRecipeDetails;
 import com.example.foodchoice.R;
@@ -32,11 +33,15 @@ import java.util.ArrayList;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     Context context;
     ArrayList<CategoryModel> catList ;
+    ArrayList<UserClass> userList;
     ArrayList<RecipeModel> recipeModelArrayList;
+
+
     public RecipeAdapter(Context context, ArrayList<RecipeModel> recipeModelArrayList) {
         this.context = context;
         this.recipeModelArrayList = recipeModelArrayList;
-catList=new ArrayList<CategoryModel>();
+        catList=new ArrayList<CategoryModel>();
+        userList = new ArrayList<UserClass>();
 
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Categories");
         reference1.addValueEventListener(new ValueEventListener() {
@@ -44,7 +49,6 @@ catList=new ArrayList<CategoryModel>();
             public void onDataChange(@NonNull DataSnapshot snapshot1) {
                 for (DataSnapshot ds : snapshot1.getChildren()) {
                     catList.add(ds.getValue(CategoryModel.class));
-                    Log.d("Read Cat","Hello");
                 }
             }
             @Override
@@ -53,7 +57,20 @@ catList=new ArrayList<CategoryModel>();
             }
         });
 
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users");
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               for (DataSnapshot ds1: snapshot.getChildren()){
+                    userList.add(ds1.getValue(UserClass.class));
+               }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @NonNull
@@ -68,6 +85,7 @@ catList=new ArrayList<CategoryModel>();
        holder.RecipeNameCard.setText(recipeModelArrayList.get(position).getRecipeName());
        holder.RecipeServing.setText("Serving: "+recipeModelArrayList.get(position).getRecipeServing());
        holder.recipeDescriptionCard.setText(recipeModelArrayList.get(position).getRecipeDescription());
+
        String cid=recipeModelArrayList.get(position).getRecipeCategoryID();
         for (CategoryModel catModel : catList) {
             Log.d("Matches mm",catModel.getCategoryId());
@@ -78,9 +96,7 @@ catList=new ArrayList<CategoryModel>();
         }
 
 
-
         Glide.with(holder.RecipeImage.getContext()).load(recipeModelArrayList.get(position).getRecipeImageUrl()).into(holder.RecipeImage);
-
         holder.RecipeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,8 +109,19 @@ catList=new ArrayList<CategoryModel>();
                 intent.putExtra("SingleRecipeServing",recipeModelArrayList.get(position).getRecipeServing());
                 intent.putExtra("SingleRecipeOIngredients",recipeModelArrayList.get(position).getRecipeIngredients());
                 intent.putExtra("SingleRecipeVideo",recipeModelArrayList.get(position).getRecipeVideoUrl());
-                intent.putExtra("SingleRecipeCategoryName",recipeModelArrayList.get(position).getRecipeCategoryID());
-                intent.putExtra("SingleRecipeUser",recipeModelArrayList.get(position).getUserID());
+                for (CategoryModel item : catList){
+                     if(item.getCategoryId().equals(cid)){
+                         intent.putExtra("SingleRecipeCategoryName", item.getCategoryName());
+                     }
+                }
+                String uId = recipeModelArrayList.get(position).getUserID();
+                for (UserClass userItem : userList){
+                      if(userItem.getUser_id().equals(uId)){
+                          intent.putExtra("SingleRecipeUser",userItem.getUser_fullName());
+                      }
+                }
+
+
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(new Intent(intent));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,566 +10,575 @@
     android:background="@color/color_main"
     tools:context=".Main.Recipe.CreateRecipe">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="14dp"
-        >
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <Button
+            android:id="@+id/UploadRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/dotted_button"
+            android:fontFamily="@font/custom_font_regular"
+            android:text="Upload Recipe"
+            android:textColor="@color/color_secondary"
+            app:backgroundTint="@null" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
             >
 
-            <Button
-                android:id="@+id/UploadRecipe"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:fontFamily="@font/custom_font_regular"
+                android:gravity="center"
+                android:padding="17dp"
+                android:textSize="27sp"
+                android:text="Make your own Recipe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+
+            <!--Ingredients-->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/dotted_button"
-                android:text="Upload Recipe"
-                android:textColor="@color/color_secondary"
-                android:fontFamily="@font/custom_font_regular"
-                app:backgroundTint="@null"
-                />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-        </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/ingredients"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_white"
-            android:fontFamily="@font/custom_font_regular"
-            android:gravity="center"
-            android:padding="17dp"
-            android:textSize="27sp"
-            android:text="Make your own Recipe"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+                </RelativeLayout>
 
-
-        <!--Ingredients-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/ingredients"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/RecipeIngredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/secondary_buttons"
-                android:text="@string/ingredients_btn"
-                app:backgroundTint="@null" />
-
-        </LinearLayout>
-
-
-        <!---Recipe Name-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:orientation="vertical"
-            android:padding="10dp"
-            tools:ignore="UselessParent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/recipe_name"
-                    android:textColor="@color/color_secondary"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="@string/edit_txt_rec"
-                app:boxStrokeColor="@color/color_main"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="@color/color_secondary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RecipeName"
+                <Button
+                    android:id="@+id/RecipeIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="@color/color_secondary" />
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/secondary_buttons"
+                    android:text="@string/ingredients_btn"
+                    app:backgroundTint="@null" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="7dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
-
-        <!--Recipe Description-->
-        <LinearLayout
-            android:id="@+id/lineDescrip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/description"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="@string/add_des"
-                app:boxStrokeColor="@color/color_main"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="@color/color_secondary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RecipeDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="@color/color_secondary" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnDes"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="5dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
-
-        <!--Recipe Steps-->
-        <LinearLayout
-            android:id="@+id/linearSteps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/htc"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="@string/ad"
-                app:boxStrokeColor="@color/color_main"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="@color/color_secondary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RecipeDirection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:lines="5"
-                    android:textColor="@color/color_secondary" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnStpes"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="5dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
+            </LinearLayout>
 
 
-        <!---Recipe Serving-->
-        <LinearLayout
-            android:id="@+id/linearServing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="gone"
-            tools:ignore="UselessParent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="Recipe Serving"
-                    android:textColor="@color/color_secondary"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText,RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
+            <!---Recipe Name-->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:baselineAligned="false">
+                android:layout_marginTop="20dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                tools:ignore="UselessParent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/recipe_name"
+                        android:textColor="@color/color_secondary"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Add recipe serving"
-                    android:layout_weight="4"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/edit_txt_rec"
                     app:boxStrokeColor="@color/color_main"
                     app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="@color/color_secondary"
-                    tools:ignore="HardcodedText">
+                    app:hintTextColor="@color/color_secondary">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/RecipeServing"
+                        android:id="@+id/RecipeName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="@color/color_secondary" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:hint="serving"
-                    android:layout_weight="2"
-                    android:layout_marginStart="5dp"
-                    android:focusable="false"
-                    android:enabled="false"
-                    app:boxStrokeColor="@color/color_main"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="@color/color_secondary"
-                    tools:ignore="HardcodedText">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
                         android:inputType="text"
                         android:textColor="@color/color_secondary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnServe"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="5dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
-
-        <!--Categories-->
-        <LinearLayout
-            android:id="@+id/linearCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/categories"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <Spinner
-                android:id="@+id/catList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnCat"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="5dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
-
-        <!--Cover Image-->
-        <LinearLayout
-            android:id="@+id/linearImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:visibility="invisible"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/gallery"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
             <Button
-                android:id="@+id/uploadCoverImage"
+                android:id="@+id/btnName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/secondary_buttons"
-                android:text="@string/gallery_btn"
-                app:backgroundTint="@null" />
-
-            <ImageView
-                android:id="@+id/RecipeCoverImage"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="3dp"
-                tools:ignore="ContentDescription" />
-
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnImage"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_button"
-            app:backgroundTint="@null"
-            android:layout_margin="5dp"
-            android:text="Next Step"
-            android:textColor="@color/color_secondary"
-            />
-
-        <!--Video-->
-        <LinearLayout
-            android:id="@+id/linearVideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/add_recipe_form_bg"
-            android:elevation="17dp"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/custom_font_regular"
-                    android:text="@string/Video"
-                    android:textSize="16sp"
-                    tools:ignore="RelativeOverlap" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/uploadRecipeVideo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/secondary_buttons"
-                android:text="@string/Video_edit"
-                app:backgroundTint="@null" />
-
-
-            <VideoView
-                android:id="@+id/RecipeVideoUrl"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="7dp"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="7dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
                 />
 
+            <!--Recipe Description-->
+            <LinearLayout
+                android:id="@+id/lineDescrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/description"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/add_des"
+                    app:boxStrokeColor="@color/color_main"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="@color/color_secondary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/RecipeDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/color_secondary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnDes"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="5dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
+                />
+
+            <!--Recipe Steps-->
+            <LinearLayout
+                android:id="@+id/linearSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/htc"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/ad"
+                    app:boxStrokeColor="@color/color_main"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="@color/color_secondary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/RecipeDirection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:textColor="@color/color_secondary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnStpes"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="5dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
+                />
+
+
+            <!---Recipe Serving-->
+            <LinearLayout
+                android:id="@+id/linearServing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone"
+                tools:ignore="UselessParent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="Recipe Serving"
+                        android:textColor="@color/color_secondary"
+                        android:textSize="16sp"
+                        tools:ignore="HardcodedText,RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:baselineAligned="false">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Add recipe serving"
+                        android:layout_weight="4"
+                        app:boxStrokeColor="@color/color_main"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:hintTextColor="@color/color_secondary"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/RecipeServing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="@color/color_secondary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="serving"
+                        android:layout_weight="2"
+                        android:layout_marginStart="5dp"
+                        android:focusable="false"
+                        android:enabled="false"
+                        app:boxStrokeColor="@color/color_main"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:hintTextColor="@color/color_secondary"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:inputType="text"
+                            android:textColor="@color/color_secondary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnServe"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="5dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
+                />
+
+            <!--Categories-->
+            <LinearLayout
+                android:id="@+id/linearCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/categories"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <Spinner
+                    android:id="@+id/catList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnCat"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="5dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
+                />
+
+            <!--Cover Image-->
+            <LinearLayout
+                android:id="@+id/linearImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:visibility="invisible"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/gallery"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/uploadCoverImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/secondary_buttons"
+                    android:text="@string/gallery_btn"
+                    app:backgroundTint="@null" />
+
+                <ImageView
+                    android:id="@+id/RecipeCoverImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="3dp"
+                    tools:ignore="ContentDescription" />
+
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnImage"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_button"
+                app:backgroundTint="@null"
+                android:layout_margin="5dp"
+                android:text="Next Step"
+                android:textColor="@color/color_secondary"
+                />
+
+            <!--Video-->
+            <LinearLayout
+                android:id="@+id/linearVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/add_recipe_form_bg"
+                android:elevation="17dp"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/custom_font_regular"
+                        android:text="@string/Video"
+                        android:textSize="16sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/uploadRecipeVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/secondary_buttons"
+                    android:text="@string/Video_edit"
+                    app:backgroundTint="@null" />
+
+
+                <VideoView
+                    android:id="@+id/RecipeVideoUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="7dp"
+                    />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
-
-    </LinearLayout>
-
-
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,9 +32,6 @@ public class RecipeIndex extends AppCompatActivity {
     RecipeAdapter recipeAdapter;
     ArrayList<RecipeModel> recipeModelArrayList = new ArrayList<RecipeModel>();
     DatabaseReference reference;
-    String catName, uName;
-    RecipeModel recipeModel;
-    ArrayList<UserClass> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +39,6 @@ public class RecipeIndex extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         recipeIndexBinding = ActivityRecipeIndexBinding.inflate(getLayoutInflater());
         setContentView(recipeIndexBinding.getRoot());
-
-        userList=new ArrayList<UserClass>();
 
         reference = FirebaseDatabase.getInstance().getReference("Recipe");
         recipeIndexBinding.RecipeIndex.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -68,20 +63,6 @@ public class RecipeIndex extends AppCompatActivity {
             }
         });
 
-//        DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("Users");
-//        reference2.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot1) {
-//                for (DataSnapshot ds : snapshot1.getChildren()) {
-//                    userList.add(ds.getValue(UserClass.class));
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -92,7 +73,6 @@ public class RecipeIndex extends AppCompatActivity {
                         RecipeModel rm=ds.getValue(RecipeModel.class);
                         recipeModelArrayList.add(rm);
                     }
-                    Log.d("Array ",recipeModelArrayList.toString());
                     recipeAdapter.notifyDataSetChanged();
                 }
             }
